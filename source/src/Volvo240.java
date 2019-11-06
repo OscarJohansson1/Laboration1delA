@@ -1,10 +1,20 @@
 import java.awt.*;
+
+/**
+ * The Volvo240 class describes a car of the type Volvo240.
+ */
+
 public class Volvo240 extends Car{
+    // Instance variables specific to Volvo240 (others in Car)
     private final static double trimFactor = 1.25;
+
+    //Constructor
     public Volvo240(){
-        super(4, Color.black, 100,"Volvo240");
+        super(4, 100, Color.black, "Volvo240");
         stopEngine();
     }
+
+    // Following methods need to be implemented according to superclass
     @Override
     public double speedFactor(){
         return getEnginePower() * 0.01 * trimFactor;
@@ -17,6 +27,8 @@ public class Volvo240 extends Car{
     public void decrementSpeed(double amount){
         setCurrentSpeed(Math.max(getCurrentSpeed() - speedFactor() * amount,0));
     }
+
+
     // TODO fix this method according to lab pm
     public void gas(double amount){
         incrementSpeed(amount);

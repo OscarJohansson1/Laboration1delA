@@ -1,44 +1,45 @@
 import java.awt.*;
 
+/**
+ * The Car class describes shared elements between the different car-models. No object of Car should be able to be
+ * created and the class is therefore abstract and serves as a template.
+ */
+
 public abstract class Car {
-    private int nrDoors; // Number of doors on the car
-    private double enginePower; // Engine power of the car
+    // Instance variables used by the different car models
+    private final int nrDoors; // Number of doors on the car
+    private final double enginePower; // Engine power of the car
     private double currentSpeed; // The current speed of the car
     private Color color; // Color of the car
-    private String modelName; // The car model name
+    private final String modelName; // The car model name
 
-    Car(int nrDoors, Color color, double enginePower, String modelName){
+    //Constructor
+    Car(int nrDoors, double enginePower, Color color, String modelName){
         this.nrDoors = nrDoors;
-        this.color = color;
         this.enginePower = enginePower;
+        this.color = color;
         this.modelName = modelName;
     }
-    public int getNrDoors(){
-        return nrDoors;
-    }
-    double getEnginePower(){
-        return enginePower;
-    }
-    double getCurrentSpeed(){
-        return currentSpeed;
-    }
-    public Color getColor(){
-        return color;
-    }
-    public void setColor(Color clr){
-        color = clr;
-    }
-    void setCurrentSpeed(double currentSpeed){
-        this.currentSpeed = currentSpeed;
-    }
-    public void startEngine(){
-        currentSpeed = 0.1;
-    }
-    void stopEngine(){
-        currentSpeed = 0;
-    }
-    //abstract metod i abstract klass agerar som interface på så sätt
-    //att alla som ärver måste innehålla metoden
+
+    // Getters and Setters
+    public int getNrDoors(){ return nrDoors; }
+
+    double getEnginePower(){ return enginePower; }
+
+    double getCurrentSpeed(){ return currentSpeed; }
+
+    public Color getColor(){ return color; }
+
+    public void setColor(Color clr){ color = clr; }
+
+    void setCurrentSpeed(double currentSpeed){ this.currentSpeed = currentSpeed; }
+
+    // Shared methods between different car models, that are equal to all models.
+    public void startEngine(){ currentSpeed = 0.1; }
+
+    void stopEngine(){ currentSpeed = 0; }
+
+    // Abstract methods that should be implemented in every class extending Car
     public abstract double speedFactor();
     public abstract void decrementSpeed(double amount);
     public abstract void incrementSpeed(double amount);
