@@ -1,5 +1,6 @@
 === Laboration 1, del 1/2 ===
 
+
 Läs labbkriterierna längst ner på sidan innan ni fortsätter!
 
 I denna laborationsuppgift är tanken att ni ska lära er att använda koncept som
