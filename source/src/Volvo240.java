@@ -11,7 +11,6 @@ public class Volvo240 extends Car{
     //Constructor
     public Volvo240(){
         super(4, 100, Color.black, "Volvo240");
-        stopEngine();
     }
 
     // Following methods need to be implemented according to superclass

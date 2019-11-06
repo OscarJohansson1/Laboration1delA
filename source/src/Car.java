@@ -19,6 +19,7 @@ public abstract class Car {
         this.enginePower = enginePower;
         this.color = color;
         this.modelName = modelName;
+        stopEngine();
     }
 
     // Getters and Setters
@@ -37,7 +38,7 @@ public abstract class Car {
     // Shared methods between different car models, that are equal to all models.
     public void startEngine(){ currentSpeed = 0.1; }
 
-    void stopEngine(){ currentSpeed = 0; }
+    private void stopEngine(){ currentSpeed = 0; }
 
     // Abstract methods that should be implemented in every class extending Car
     public abstract double speedFactor();
