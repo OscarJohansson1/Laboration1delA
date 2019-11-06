@@ -1,4 +1,5 @@
 import java.awt.*;
+
 public abstract class Car {
     private int nrDoors; // Number of doors on the car
     private double enginePower; // Engine power of the car
