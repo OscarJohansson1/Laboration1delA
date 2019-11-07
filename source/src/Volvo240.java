@@ -4,7 +4,7 @@ import java.awt.*;
  * The Volvo240 class describes a car of the type Volvo240.
  */
 
-public class Volvo240 extends Car{
+public class Volvo240 extends Car {
     // Instance variables specific to Volvo240 (others in Car)
     private final static double trimFactor = 1.25;
 

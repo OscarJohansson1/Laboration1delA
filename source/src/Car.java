@@ -5,14 +5,15 @@ import java.awt.*;
  * created and the class is therefore abstract and serves as a template.
  */
 
-public abstract class Car {
+public abstract class Car implements IMovable{
 
     // Instance variables used by the different car models
     private final int nrDoors; // Number of doors on the car
     private final double enginePower; // Engine power of the car
     private double currentSpeed; // The current speed of the car
     private Color color; // Color of the car
-    private final String modelName; // The car model name
+    private final String modelName; // The car model name'
+    private short direction;
 
     //Constructor
     Car(int nrDoors, double enginePower, Color color, String modelName){
@@ -46,4 +47,22 @@ public abstract class Car {
     public abstract double speedFactor();
     public abstract void decrementSpeed(double amount);
     public abstract void incrementSpeed(double amount);
+
+
+    @Override
+    public void move() {
+
+
+
+    }
+
+    @Override
+    public void turnLeft() {
+
+    }
+
+    @Override
+    public void turnRight() {
+
+    }
 }
