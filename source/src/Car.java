@@ -6,6 +6,9 @@ import java.awt.*;
  */
 
 public abstract class Car {
+
+    // Hej Måns
+
     // Instance variables used by the different car models
     private final int nrDoors; // Number of doors on the car
     private final double enginePower; // Engine power of the car
@@ -23,6 +26,7 @@ public abstract class Car {
     }
 
     // Getters and Setters
+
     public int getNrDoors(){ return nrDoors; }
 
     double getEnginePower(){ return enginePower; }
