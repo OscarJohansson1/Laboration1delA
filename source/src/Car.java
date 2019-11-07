@@ -7,6 +7,8 @@ import java.awt.*;
 
 public abstract class Car {
 
+    // Hej igen!!!
+
     //hi agon ;)
 
     // Instance variables used by the different car models
