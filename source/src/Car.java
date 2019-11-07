@@ -16,7 +16,7 @@ public abstract class Car implements IMovable{
     private final String modelName; // The car model name'
     private double posX;
     private double posY;
-    private short angle;
+    private int angle;
 
     //Constructor
     Car(int nrDoors, double enginePower, Color color, String modelName){
@@ -60,11 +60,11 @@ public abstract class Car implements IMovable{
 
     @Override
     public void turnLeft() {
-        angle -= 90;
+        angle = (angle - 90) % 360;
     }
 
     @Override
     public void turnRight() {
-        angle += 90;
+        angle = (angle + 90) % 360;
     }
 }
