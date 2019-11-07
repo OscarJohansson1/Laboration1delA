@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.lang.Math;
 
 /**
  * The Car class describes shared elements between the different car-models. No object of Car should be able to be
@@ -13,7 +14,9 @@ public abstract class Car implements IMovable{
     private double currentSpeed; // The current speed of the car
     private Color color; // Color of the car
     private final String modelName; // The car model name'
-    private short direction;
+    private double posX;
+    private double posY;
+    private short angle;
 
     //Constructor
     Car(int nrDoors, double enginePower, Color color, String modelName){
@@ -48,21 +51,19 @@ public abstract class Car implements IMovable{
     public abstract void decrementSpeed(double amount);
     public abstract void incrementSpeed(double amount);
 
-
     @Override
     public void move() {
-
-
-
+        posX *= Math.cos(Math.toRadians(angle))*currentSpeed;
+        posY *= Math.sin(Math.toRadians(angle))*currentSpeed;
     }
 
     @Override
     public void turnLeft() {
-
+        angle -= 90;
     }
 
     @Override
     public void turnRight() {
-
+        angle += 90;
     }
 }
