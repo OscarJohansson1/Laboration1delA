@@ -7,11 +7,6 @@ import java.awt.*;
 
 public abstract class Car {
 
-    // Hej igen!!!
-
-    //hi agon ;)
-
-
     // Instance variables used by the different car models
     private final int nrDoors; // Number of doors on the car
     private final double enginePower; // Engine power of the car
