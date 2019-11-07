@@ -1,3 +1,7 @@
+/**
+ * Interface for movable objects.
+ */
+
 public interface IMovable {
 
     void move();
