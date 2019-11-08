@@ -19,9 +19,6 @@ public class Test {
                 "returns " + saab95.speedFactor();
     }
 
-    //public void testIncrementSpeedSaab95() {
-     //   double prelSpeed = saab95.setCurrentSpeed();
-    //}
 
     @org.junit.Test
     public void testIncrementSpeedSaab95() {
