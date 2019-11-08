@@ -6,7 +6,9 @@ import java.awt.*;
 
 public class Volvo240 extends Car {
 
-    // Instance variables specific to Volvo240 (others in Car)
+    /**
+     * Factor of how trimed car is compared with original
+     */
     private final static double trimFactor = 1.25;
 
     /**

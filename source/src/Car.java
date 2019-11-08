@@ -8,14 +8,37 @@ import java.lang.Math;
 
 public abstract class Car implements IMovable{
 
-    // Instance variables used by the different car models
-    private final int nrDoors; // Number of doors on the car
-    private final double enginePower; // Engine power of the car
-    private double currentSpeed; // The current speed of the car
-    private Color color; // Color of the car
-    private final String modelName; // The car model name'
+    /**
+     * Number of doors on the car
+      */
+    private final int nrDoors;
+    /**
+     * Engine power of the car
+     */
+    private final double enginePower;
+    /**
+     * The current speed of the car
+     */
+    private double currentSpeed;
+    /**
+     * Color of the car
+     */
+    private Color color;
+    /**
+     * The car model name
+     */
+    private final String modelName;
+    /**
+     * Cars x-position
+     */
     private double posX;
+    /**
+     * Cars y-position
+     */
     private double posY;
+    /**
+     * Cars current direction
+     */
     private int angle;
 
     /**
@@ -54,8 +77,26 @@ public abstract class Car implements IMovable{
     private void stopEngine(){ currentSpeed = 0; }
 
     // Abstract methods that should be implemented in every class extending Car
+
+    /**
+     * Calculates speedFactor for car based on EnginePower and specifics
+     * for the different car-models. Should be implemented in subclasses.
+     * @return speedFactor of car
+     */
     public abstract double speedFactor();
+
+    /**
+     * Decrement CurrentSpeed based on speedFactor and amount. Should be
+     * implemented in subclasses.
+     * @param amount a factor defining the intensity of decrease in speed
+     */
     public abstract void decrementSpeed(double amount);
+
+    /**
+     * Increment CurrentSpeed based on speedFactor and amount. Should be
+     * implemented in subclasses.
+     * @param amount a factor defining the intensity of increase in speed
+     */
     public abstract void incrementSpeed(double amount);
 
     /**

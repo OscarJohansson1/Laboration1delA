@@ -6,7 +6,9 @@ import java.awt.*;
 
 public class Saab95 extends Car{
 
-    // Instance variables specific to Saab95 (others in Car)
+    /**
+     * Turbo on/off
+     */
     private boolean turboOn;
 
     /**
