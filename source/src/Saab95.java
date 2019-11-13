@@ -64,21 +64,5 @@ public class Saab95 extends Car{
         setCurrentSpeed(getCurrentSpeed() - speedFactor() * amount);
     }
 
-    /**
-     * Calls specific car-models method incrementSpeed().
-     * @param amount a factor defining the intensity of increase in speed
-     */
-    // TODO fix this method according to lab pm
-    public void gas(double amount){
-        incrementSpeed(amount);
-    }
 
-    /**
-     * Calls specific car-models method decrementSpeed().
-     * @param amount a factor defining the intensity of decrease in speed
-     */
-    // TODO fix this method according to lab pm
-    public void brake(double amount){
-        decrementSpeed(amount);
-    }
 }

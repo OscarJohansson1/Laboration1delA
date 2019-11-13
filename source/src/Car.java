@@ -123,4 +123,30 @@ public abstract class Car implements IMovable{
     public void turnRight() {
         angle = (angle + 90) % 360;
     }
+
+    /**
+     * Calls specific car-models method incrementSpeed().
+     * @param amount a factor defining the intensity of increase in speed
+     */
+    public void gas(double amount){
+        if (amount >= 0 && amount <= 1) {
+            incrementSpeed(amount);
+            if (getCurrentSpeed() > getEnginePower()) {
+                setCurrentSpeed(getEnginePower());
+            }
+        }
+    }
+
+    /**
+     * Calls specific car-models method decrementSpeed().
+     * @param amount a factor defining the intensity of decrease in speed
+     */
+    public void brake(double amount){
+        if (amount >= 0 && amount <= 1) {
+            decrementSpeed(amount);
+            if (getCurrentSpeed() < 0) {
+                setCurrentSpeed(0);
+            }
+        }
+    }
 }

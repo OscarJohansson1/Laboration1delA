@@ -47,22 +47,4 @@ public class Volvo240 extends Car {
     public void decrementSpeed(double amount){
         setCurrentSpeed(Math.max(getCurrentSpeed() - speedFactor() * amount,0));
     }
-
-    /**
-     * Calls specific car-models method incrementSpeed().
-     * @param amount a factor defining the intensity of increase in speed
-     */
-    // TODO fix this method according to lab pm
-    public void gas(double amount){
-        incrementSpeed(amount);
-    }
-
-    /**
-     * Calls specific car-models method decrementSpeed().
-     * @param amount a factor defining the intensity of decrease in speed
-     */
-    // TODO fix this method according to lab pm
-    public void brake(double amount){
-        decrementSpeed(amount);
-    }
 }
