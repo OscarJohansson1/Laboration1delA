@@ -48,10 +48,11 @@ public class Test {
 
     @org.junit.Test
     public void testDecrementSpeedSaab95(){
+        saab95.setCurrentSpeed(0.1);
         double speed = saab95.getCurrentSpeed();
         saab95.decrementSpeed(1);
 
-        assert Double.compare(saab95.getCurrentSpeed(), speed) <= 0 :
+        assert Double.compare(saab95.getCurrentSpeed(), speed) < 0 :
                 "Decrement speed didn't decrement speed properly";
     }
 
