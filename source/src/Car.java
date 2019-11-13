@@ -57,11 +57,15 @@ public abstract class Car implements IMovable{
     }
 
     // Getters and Setters
-    public int getNrDoors(){ return nrDoors; }
+    int getNrDoors(){ return nrDoors; }
     double getEnginePower(){ return enginePower; }
     double getCurrentSpeed(){ return currentSpeed; }
-    public Color getColor(){ return color; }
-    public void setColor(Color clr){ color = clr; }
+    Color getColor(){ return color; }
+    String getModelName(){ return modelName; }
+    double getPosX(){ return posX; }
+    double getPosY(){ return posY; }
+    int getAngle(){ return angle; }
+    void setColor(Color clr){ color = clr; }
     void setCurrentSpeed(double currentSpeed){ this.currentSpeed = currentSpeed; }
 
     // Shared methods between different car models, that are equal to all models.
@@ -69,12 +73,12 @@ public abstract class Car implements IMovable{
     /**
      * Starts car-engine and gives car slight speed forward.
      */
-    public void startEngine(){ currentSpeed = 0.1; }
+    void startEngine(){ currentSpeed = 0.1; }
 
     /**
      * Stops car-engine and sets speed to zero.
      */
-    private void stopEngine(){ currentSpeed = 0; }
+    void stopEngine(){ currentSpeed = 0; }
 
     // Abstract methods that should be implemented in every class extending Car
 
@@ -104,8 +108,8 @@ public abstract class Car implements IMovable{
      */
     @Override
     public void move() {
-        posX *= Math.cos(Math.toRadians(angle))*currentSpeed;
-        posY *= Math.sin(Math.toRadians(angle))*currentSpeed;
+        posX += Math.cos(Math.toRadians(angle))*currentSpeed;
+        posY += Math.sin(Math.toRadians(angle))*currentSpeed;
     }
 
     /**
@@ -128,7 +132,7 @@ public abstract class Car implements IMovable{
      * Calls specific car-models method incrementSpeed().
      * @param amount a factor defining the intensity of increase in speed
      */
-    public void gas(double amount){
+    void gas(double amount){
         if (amount >= 0 && amount <= 1) {
             incrementSpeed(amount);
             if (getCurrentSpeed() > getEnginePower()) {
@@ -141,7 +145,7 @@ public abstract class Car implements IMovable{
      * Calls specific car-models method decrementSpeed().
      * @param amount a factor defining the intensity of decrease in speed
      */
-    public void brake(double amount){
+    void brake(double amount){
         if (amount >= 0 && amount <= 1) {
             decrementSpeed(amount);
             if (getCurrentSpeed() < 0) {

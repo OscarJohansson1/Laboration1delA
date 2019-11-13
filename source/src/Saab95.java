@@ -14,7 +14,7 @@ public class Saab95 extends Car{
     /**
      * Constructor for class Saab95.
      */
-    public Saab95(){
+    Saab95(){
         super(2,125, Color.red,"Saab95");
         turboOn = false;
     }
@@ -22,14 +22,14 @@ public class Saab95 extends Car{
     /**
      * Changes boolean turboOn to true.
      */
-    public void setTurboOn(){
+    void setTurboOn(){
         turboOn = true;
     }
 
     /**
      * Changes boolean turboOn to false.
      */
-    public void setTurboOff(){
+    void setTurboOff(){
         turboOn = false;
     }
 
