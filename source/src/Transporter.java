@@ -25,7 +25,7 @@ public abstract class Transporter {
     }
 
     public Object removeFirstStored(){
-        Object removed;
+        Object removed = new Object();
         if(storedObjects.size() > 0){
             removed = storedObjects.removeFirst();
         }
@@ -36,7 +36,7 @@ public abstract class Transporter {
     }
 
     public Object removeLastStored(){
-        Object removed;
+        Object removed = new Object();
         if(storedObjects.size() > 0){
             removed = storedObjects.removeLast();
         }
