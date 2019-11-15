@@ -2,7 +2,7 @@ import java.util.ArrayDeque;
 
 public abstract class Transporter {
     private Object storeableObjectType;
-    private ArrayDeque storedObjects;
+    private ArrayDeque <Object> storedObjects;
     private int maxSize;
 
     public Transporter(Object objectType, int maxSize){
