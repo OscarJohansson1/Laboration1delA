@@ -32,10 +32,7 @@ public class Test {
     public void testSpeedFactorIfTurboOffSaab95() {
         saab95.setTurboOff();
 
-
-
-        assertTrue("speedFactor with turbo off wrongly returns " + saab95.speedFactor(),
-                saab95.speedFactor() == saab95.getEnginePower() * 0.01);
+        assertEquals("speedFactor with turbo off wrongly returns " + saab95.speedFactor(), saab95.speedFactor(), saab95.getEnginePower() * 0.01, 0.0);
     }
 
     /**
@@ -45,8 +42,7 @@ public class Test {
     public void testSpeedFactorIfTurboOnSaab95() {
         saab95.setTurboOn();
 
-        assertTrue("speedFactor with turbo on wrongly " + "returns " + saab95.speedFactor(),
-                saab95.speedFactor() == saab95.getEnginePower() * 0.01 * 1.3);
+        assertEquals("speedFactor with turbo on wrongly " + "returns " + saab95.speedFactor(), saab95.speedFactor(), saab95.getEnginePower() * 0.01 * 1.3, 0.0);
     }
 
     /**
@@ -118,8 +114,7 @@ public class Test {
     public void testTurnLeft() {
         volvo240.turnLeft();
 
-        assertTrue("Doesn't turn 90 degrees left",
-                volvo240.getAngle() == -90);
+        assertEquals("Doesn't turn 90 degrees left", volvo240.getAngle(), -90);
     }
 
     /**
@@ -129,8 +124,7 @@ public class Test {
     public void testTurnRight() {
         volvo240.turnRight();
 
-        assertTrue("Doesn't turn 90 degrees right",
-                volvo240.getAngle() == 90);
+        assertEquals("Doesn't turn 90 degrees right", 90, volvo240.getAngle());
     }
 
     /**
@@ -140,8 +134,7 @@ public class Test {
     public void testStartEngine() {
         saab95.startEngine();
 
-        assertTrue("Doesn't start properly",
-                saab95.getCurrentSpeed() == 0.1);
+        assertEquals("Doesn't start properly", 0.1, saab95.getCurrentSpeed(), 0.0);
     }
 
     /**
@@ -152,8 +145,7 @@ public class Test {
         saab95.setCurrentSpeed(0.1);
         saab95.stopEngine();
 
-        assertTrue("Doesn't stop properly",
-                saab95.getCurrentSpeed() == 0);
+        assertEquals("Doesn't stop properly", 0, saab95.getCurrentSpeed(), 0.0);
     }
 
     /**
@@ -161,8 +153,7 @@ public class Test {
      */
     @org.junit.Test
     public void testGetNrDoors() {
-        assertTrue("Doesn't return correct amount of doors",
-                volvo240.getNrDoors() == 4);
+        assertEquals("Doesn't return correct amount of doors", 4, volvo240.getNrDoors());
     }
 
     /**
@@ -171,8 +162,8 @@ public class Test {
     @org.junit.Test
     public void testColor() {
         volvo240.setColor(Color.blue);
-        assertTrue("Doesn't return correct amount of doors",
-                volvo240.getColor() == Color.blue);
+
+        assertSame("Doesn't return correct amount of doors", volvo240.getColor(), Color.blue);
     }
 
     /**
@@ -180,8 +171,7 @@ public class Test {
      */
     @org.junit.Test
     public void testGetModelNumber() {
-        assertTrue("Doesn't return correct amount of doors",
-                saab95.getModelName().equals("Saab95"));
+        assertEquals("Doesn't return correct amount of doors", "Saab95", saab95.getModelName());
     }
 
     /**
@@ -193,8 +183,7 @@ public class Test {
         saab95.setCurrentSpeed(124);
         saab95.gas(1);
 
-        assertTrue("Gas doesn't increase current speed properly",
-                Double.compare(saab95.getCurrentSpeed(), saab95.getEnginePower()) == 0);
+        assertEquals("Gas doesn't increase current speed properly", 0, Double.compare(saab95.getCurrentSpeed(), saab95.getEnginePower()));
     }
 
     /**
@@ -206,7 +195,6 @@ public class Test {
         saab95.setCurrentSpeed(1);
         saab95.brake(1);
 
-        assertTrue("Gas doesn't increase current speed properly",
-                Double.compare(saab95.getCurrentSpeed(), 0) == 0);
+        assertEquals("Gas doesn't increase current speed properly", 0, Double.compare(saab95.getCurrentSpeed(), 0));
     }
 }

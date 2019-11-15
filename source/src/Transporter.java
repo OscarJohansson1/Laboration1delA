@@ -25,20 +25,24 @@ public abstract class Transporter {
     }
 
     public Object removeFirstStored(){
+        Object removed;
         if(storedObjects.size() > 0){
-            return storedObjects.removeFirst();
+            removed = storedObjects.removeFirst();
         }
         else{
             System.out.println("Cannot remove object as transporter is empty");
         }
+        return removed;
     }
 
     public Object removeLastStored(){
+        Object removed;
         if(storedObjects.size() > 0){
-            return storedObjects.removeLast();
+            removed = storedObjects.removeLast();
         }
         else{
             System.out.println("Cannot remove object as transporter is empty");
         }
+        return removed;
     }
 }
