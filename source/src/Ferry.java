@@ -22,7 +22,6 @@ public class Ferry implements IMovable, ILoadable, IRaiseable{
 
     }
 
-
     @Override
     public boolean isDown() {
         return rampIsUp;
@@ -44,8 +43,8 @@ public class Ferry implements IMovable, ILoadable, IRaiseable{
     }
 
     @Override
-    public void load(Car car) {
-        storage.load(car);
+    public void load(Object object) {
+        storage.load(object);
     }
 
     @Override

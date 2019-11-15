@@ -38,7 +38,7 @@ JUnit-test i er Testklass.
 == Uppgift b) ==
 
 Skapa en representation av en biltransport - dvs en långtradare som kan
-transportera bilar på flaket. Ge den ett valfritt modellnamn och filnamn.
+Storagea bilar på flaket. Ge den ett valfritt modellnamn och filnamn.
 
 Biltransporten ska på lämpligt sätt införlivas i er arvshierarki från tidigare.
 Likt Scania-lastbilen har den ett "flak" i form av en ramp som går att höja och 
@@ -98,7 +98,7 @@ Viktiga saker att ha i åtanke under den här uppgiften:
 Använd generiska typer för att skapa en lösning som generaliserar bilar
 och bilfärjor men abstraherar bort från domänen fordon. Dvs, designa och
 implementera lämpliga abstraktioner för saker som är "transportörer" och
-"transporterbara" i allmänhet. Meningen är att dessa ska vara lika
+"Storagebara" i allmänhet. Meningen är att dessa ska vara lika
 tillämpliga på bilar och bilfärjor som på t ex känguruungar och
 kängurumammor. Refaktorisera er bil- och bilfärjekod så att
 de blir specifika instanser av koden från denna uppgift.
