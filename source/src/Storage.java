@@ -27,7 +27,7 @@ public class Storage {
     public Object removeFirstStored(){
         Object removed = new Object();
         if(storedObjects.size() > 0){
-            removed = storedObjects.removeFirst();
+            removed = storedObjects.pop();
         }
         else{
             System.out.println("Cannot remove object as Storage is empty");

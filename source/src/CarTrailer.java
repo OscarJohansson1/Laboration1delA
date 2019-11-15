@@ -5,9 +5,14 @@ public class CarTrailer implements IRaiseable, ILoadable {
 
     private boolean trailerIsDown = true;
     private List<Car> cars = new ArrayList<>();
+    private Storage storage;
+
+    public CarTrailer(int maxStorage) {
+        this.storage = new Storage(Car.class, maxStorage);
+    }
 
     public int getAmountOfCars() {
-       return cars.size();
+        return cars.size();
     }
 
     @Override
@@ -29,4 +34,5 @@ public class CarTrailer implements IRaiseable, ILoadable {
     public void lower() {
         trailerIsDown = true;
     }
+
 }

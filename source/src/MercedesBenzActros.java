@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public class MercedesBenzActros extends Car {
+public class MercedesBenzActros extends Car{
 
     private boolean hasCarTrailerConnected = false;
     private CarTrailer carTrailer = new CarTrailer();
@@ -30,4 +30,16 @@ public class MercedesBenzActros extends Car {
             setCurrentSpeed(getCurrentSpeed() + speedFactor() * amount);
         }
     }
+
+    @Override
+    void load(){
+
+
+
+    }
+
+
+
+
+
 }
