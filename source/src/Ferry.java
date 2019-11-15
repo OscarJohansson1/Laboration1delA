@@ -4,9 +4,10 @@ public class Ferry implements IMovable, ILoadable, IRaiseable{
     private LoadingPlatform loadingPlatform;
 
     public Ferry(int maxStorage, int loadingAngle){
-        this.storage = new Storage(Car.class, maxStorage);
-        this.loadingPlatform = new LoadingPlatform(loadingAngle);
+        this.storage = new Transporter(Car.class, maxStorage);
+        //this.loadingPlatform = new LoadingPlatform(Boolean.FALSE, loadingAngle);
     }
+
 
     @Override
     public void move() {

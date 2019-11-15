@@ -21,7 +21,19 @@ public class Scania extends Car {
         trailer = null;
         hasTrailerConnected = false;
     }
-    
+
+    public int getCurrentAngleOfTrailer() {
+        return trailer.getAngle();
+    }
+
+    public void raiseTrailer(int amount) {
+        trailer.raise(amount);
+    }
+
+    public void lowerTrailer(int amount) {
+        trailer.lower(amount);
+    }
+
     @Override
     public double speedFactor() {
         if (hasTrailerConnected) {
@@ -29,7 +41,6 @@ public class Scania extends Car {
         }
         return getEnginePower() * 0.01;
     }
-
 
     @Override
     public void decrementSpeed(double amount) {

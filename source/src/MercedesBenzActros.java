@@ -11,7 +11,6 @@ public class MercedesBenzActros extends Car {
 
     @Override
     public double speedFactor() {
-
         if (hasCarTrailerConnected) {
             return getEnginePower() * 0.01 * 0.5;
         }
@@ -20,11 +19,15 @@ public class MercedesBenzActros extends Car {
 
     @Override
     public void decrementSpeed(double amount) {
-
+        setCurrentSpeed(getCurrentSpeed() - speedFactor() * amount);
     }
 
     @Override
     public void incrementSpeed(double amount) {
-
+        if (carTrailer != null && !carTrailer.isDown()) {
+            setCurrentSpeed(getCurrentSpeed());
+        } else {
+            setCurrentSpeed(getCurrentSpeed() + speedFactor() * amount);
+        }
     }
 }
