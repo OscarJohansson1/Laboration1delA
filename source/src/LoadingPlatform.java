@@ -18,6 +18,7 @@ public class LoadingPlatform {
             platformUp = true;
         }
     }
+
     public int getLoadingAngle() {
         return loadingAngle;
     }

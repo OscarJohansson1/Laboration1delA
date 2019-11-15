@@ -1,21 +1,11 @@
-public class Ferry implements IMovable{
+public class Ferry implements IMovable, ILoadable, IRaiseable{
 
-    private Transporter storage;
+    private Storage storage;
     private LoadingPlatform loadingPlatform;
 
     public Ferry(int maxStorage, int loadingAngle){
-        this.storage = new Transporter(Car.class, maxStorage);
-        this.loadingPlatform = new LoadingPlatform(Boolean.FALSE, loadingAngle);
-    }
-
-    public void enterCar(Car car){
-        if(loadingPlatform.isPlatformUp()){
-            storage.store(car);
-        }
-    }
-
-    public Car exitCar(){
-        return (Car) storage.removeFirstStored();
+        this.storage = new Storage(Car.class, maxStorage);
+        this.loadingPlatform = new LoadingPlatform(loadingAngle);
     }
 
     @Override
@@ -31,5 +21,36 @@ public class Ferry implements IMovable{
     @Override
     public void turnRight() {
 
+    }
+
+
+    @Override
+    public boolean isDown() {
+        return false;
+    }
+
+    @Override
+    public boolean isFullyRaised() {
+        return false;
+    }
+
+    @Override
+    public void raise() {
+
+    }
+
+    @Override
+    public void lower() {
+
+    }
+
+    @Override
+    public void load(Car car) {
+        storage.load(car);
+    }
+
+    @Override
+    public Object unload() {
+        return storage.removeFirstStored();
     }
 }

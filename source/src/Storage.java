@@ -1,17 +1,16 @@
-import javax.management.ObjectName;
 import java.util.ArrayDeque;
 
-public class Transporter {
+public class Storage {
     private Class<?> storeableObjectType;
     private int maxSize;
     private ArrayDeque <Object> storedObjects;
 
-    public Transporter(Class<?> objectType, int maxSize){
+    public Storage(Class<?> objectType, int maxSize){
         this.maxSize = maxSize;
         this.storeableObjectType = objectType;
     }
 
-    public void store(Object object){
+    public void load(Object object){
         if(storeableObjectType.getClass().equals(object.getClass())) {
             if(storedObjects.size() < maxSize) {
                 storedObjects.push(object);
@@ -31,7 +30,7 @@ public class Transporter {
             removed = storedObjects.removeFirst();
         }
         else{
-            System.out.println("Cannot remove object as transporter is empty");
+            System.out.println("Cannot remove object as Storage is empty");
         }
         return removed;
     }
@@ -42,7 +41,7 @@ public class Transporter {
             removed = storedObjects.removeLast();
         }
         else{
-            System.out.println("Cannot remove object as transporter is empty");
+            System.out.println("Cannot remove object as Storage is empty");
         }
         return removed;
     }
