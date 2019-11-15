@@ -1,9 +1,9 @@
 import java.awt.*;
 
-public class MercedesBenzActros extends Car{
+public class MercedesBenzActros extends Car implements ILoadable {
 
     private boolean hasCarTrailerConnected = false;
-    private CarTrailer carTrailer = new CarTrailer();
+    private CarTrailer carTrailer = new CarTrailer(10);
 
     MercedesBenzActros() {
         super(2, 150, Color.magenta, "Mercedes-Benz Actros");
@@ -31,10 +31,17 @@ public class MercedesBenzActros extends Car{
         }
     }
 
+    @Override
+    public void load(Object object) {
+        if (this != object) {
+            carTrailer.load(object);
+        }
+    }
 
-
-
-
+    @Override
+    public Object unload() {
+        return carTrailer.unload();
+    }
 
 
 }
