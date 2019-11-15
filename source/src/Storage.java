@@ -3,7 +3,7 @@ import java.util.ArrayDeque;
 public class Storage {
     private Class<?> storeableObjectType;
     private int maxSize;
-    private ArrayDeque <Object> storedObjects;
+    private ArrayDeque <Object> storedObjects = new ArrayDeque<>();
 
     public Storage(Class<?> objectType, int maxSize){
         this.maxSize = maxSize;
@@ -11,7 +11,8 @@ public class Storage {
     }
 
     public void load(Object object){
-        if(storeableObjectType.equals(object.getClass())) {
+        if(storeableObjectType.equals(object.getClass()) ||
+                storeableObjectType.equals(object.getClass().getSuperclass())) {
             if(storedObjects.size() < maxSize) {
                 storedObjects.push(object);
             }
@@ -27,7 +28,7 @@ public class Storage {
     public Object removeFirstStored(){
         Object removed = new Object();
         if(storedObjects.size() > 0){
-            removed = storedObjects.pop();
+            removed = storedObjects.removeLast();
         }
         else{
             System.out.println("Cannot remove object as Storage is empty");
@@ -38,7 +39,7 @@ public class Storage {
     public Object removeLastStored(){
         Object removed = new Object();
         if(storedObjects.size() > 0){
-            removed = storedObjects.removeLast();
+            removed = storedObjects.removeFirst();
         }
         else{
             System.out.println("Cannot remove object as Storage is empty");
