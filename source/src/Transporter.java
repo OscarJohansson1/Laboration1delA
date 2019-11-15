@@ -1,11 +1,12 @@
+import javax.management.ObjectName;
 import java.util.ArrayDeque;
 
-public abstract class Transporter {
-    private Object storeableObjectType;
-    private ArrayDeque <Object> storedObjects;
+public class Transporter {
+    private Class<?> storeableObjectType;
     private int maxSize;
+    private ArrayDeque <Object> storedObjects;
 
-    public Transporter(Object objectType, int maxSize){
+    public Transporter(Class<?> objectType, int maxSize){
         this.maxSize = maxSize;
         this.storeableObjectType = objectType;
     }

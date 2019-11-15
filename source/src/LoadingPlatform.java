@@ -7,6 +7,7 @@ public class LoadingPlatform {
         this.platformUp = platformUp;
         this.loadingAngle = loadingAngle;
     }
+
     private void platformMove(int angle, int max, int min){
         loadingAngle += angle;
         if(loadingAngle > max){
