@@ -1,13 +1,11 @@
 public class Ferry implements IMovable, ILoadable, IRaiseable{
 
     private Storage storage;
-    private LoadingPlatform loadingPlatform;
+    private Boolean rampIsUp;
 
-    public Ferry(int maxStorage, int loadingAngle){
-        this.storage = new Transporter(Car.class, maxStorage);
-        //this.loadingPlatform = new LoadingPlatform(Boolean.FALSE, loadingAngle);
+    public Ferry(int maxStorage){
+        this.storage = new Storage(Car.class, maxStorage);
     }
-
 
     @Override
     public void move() {
@@ -27,22 +25,22 @@ public class Ferry implements IMovable, ILoadable, IRaiseable{
 
     @Override
     public boolean isDown() {
-        return false;
+        return rampIsUp;
     }
 
     @Override
     public boolean isFullyRaised() {
-        return false;
+        return rampIsUp;
     }
 
     @Override
     public void raise() {
-
+        rampIsUp = Boolean.TRUE;
     }
 
     @Override
     public void lower() {
-
+        rampIsUp = Boolean.FALSE;
     }
 
     @Override
