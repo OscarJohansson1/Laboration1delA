@@ -73,7 +73,7 @@ public class Test {
      * Tests method decrementSpeed() in Saab95. Starting-speed is 0.1.
      */
     @org.junit.Test
-    public void testDecrementSpeedSaab95(){
+    public void testDecrementSpeedSaab95() {
         saab95.setCurrentSpeed(0.1);
         double speed = saab95.getCurrentSpeed();
         saab95.decrementSpeed(1);
@@ -86,7 +86,7 @@ public class Test {
      * Tests method decrementSpeed() in Volvo240. Starting-speed is 0.1.
      */
     @org.junit.Test
-    public void testDecrementSpeedVolvo240(){
+    public void testDecrementSpeedVolvo240() {
         volvo240.setCurrentSpeed(0.1);
         double speed = volvo240.getCurrentSpeed();
         volvo240.decrementSpeed(1);
@@ -197,4 +197,5 @@ public class Test {
 
         assertEquals("Gas doesn't increase current speed properly", 0, Double.compare(saab95.getCurrentSpeed(), 0));
     }
+
 }
