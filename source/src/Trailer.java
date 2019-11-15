@@ -8,6 +8,9 @@ public class Trailer implements IRaiseable {
         this.maximumAngle = maximumAngle;
     }
 
+    public int getAngle() {
+        return angle;
+    }
 
     @Override
     public boolean isDown() {

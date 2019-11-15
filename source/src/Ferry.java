@@ -5,7 +5,7 @@ public class Ferry implements IMovable{
 
     public Ferry(int maxStorage, int loadingAngle){
         this.storage = new Transporter(Car.class, maxStorage);
-        this.loadingPlatform = new LoadingPlatform(Boolean.FALSE, loadingAngle);
+        //this.loadingPlatform = new LoadingPlatform(Boolean.FALSE, loadingAngle);
     }
 
     public void enterCar(Car car){

@@ -6,6 +6,10 @@ public class CarTrailer implements IRaiseable, ILoadable {
     private boolean trailerIsDown = true;
     private List<Car> cars = new ArrayList<>();
 
+    public int getAmountOfCars() {
+       return cars.size();
+    }
+
     @Override
     public boolean isDown() {
         return trailerIsDown;
