@@ -40,7 +40,10 @@ public class MercedesBenzActros extends Car implements ILoadable {
 
     @Override
     public Object unload() {
-        return carTrailer.unload();
+        if (getCurrentSpeed() == 0) {
+            return carTrailer.unload();
+        }
+        return null;
     }
 
 
