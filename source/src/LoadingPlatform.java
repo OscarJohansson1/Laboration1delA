@@ -1,10 +1,9 @@
 public class LoadingPlatform {
     private boolean platformUp = false;
-    private int loadingAngle = 0;
+    private int loadingAngle;
     //konstruktor? skapa ett flak med konstruktor
     //downbelowangle
-    public LoadingPlatform(boolean platformUp, int loadingAngle){
-        this.platformUp = platformUp;
+    public LoadingPlatform(int loadingAngle){
         this.loadingAngle = loadingAngle;
     }
 
