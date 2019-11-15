@@ -1,12 +1,24 @@
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
-public class MercedesBenzActros extends Car implements ILoadable {
+public class MercedesBenzActros extends Car implements ILoadable{
 
     private boolean hasCarTrailerConnected = false;
     private CarTrailer carTrailer = new CarTrailer(10);
+    private List<Car> cars = new ArrayList<>();
 
     MercedesBenzActros() {
         super(2, 150, Color.magenta, "Mercedes-Benz Actros");
+    }
+
+    @Override
+    public void move() {
+        super.move();
+        for (Car c : cars) {
+            c.setPosX(getPosX());
+            c.setPosY(getPosY());
+        }
     }
 
     @Override
@@ -31,10 +43,26 @@ public class MercedesBenzActros extends Car implements ILoadable {
         }
     }
 
+    public void addTrailer(int maxSize) {
+        carTrailer = new CarTrailer(maxSize);
+        hasCarTrailerConnected = true;
+    }
+
+    public void removeTrailer() {
+        carTrailer = null;
+        hasCarTrailerConnected = false;
+    }
+
     @Override
     public void load(Object object) {
-        if (this != object) {
-            carTrailer.load(object);
+        if (object instanceof Car) {
+            double xDifference = ((Car) object).getPosX() - getPosX();
+            double yDifference = ((Car) object).getPosY() - getPosY();
+            if (xDifference < 10 && yDifference < 10) {
+                if (this != object && getCurrentSpeed() == 0) {
+                    carTrailer.load(object);
+                }
+            }
         }
     }
 
@@ -45,6 +73,9 @@ public class MercedesBenzActros extends Car implements ILoadable {
         }
         return null;
     }
+
+
+
 
 
 }
