@@ -1,6 +1,6 @@
 public interface ILoadable {
 
-    void load();
+    void load(Object object);
 
     Object unload();
 
