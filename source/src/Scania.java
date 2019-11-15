@@ -24,6 +24,7 @@ public class Scania extends Car {
         return getEnginePower() * 0.01;
     }
 
+
     @Override
     public void decrementSpeed(double amount) {
         setCurrentSpeed(getCurrentSpeed() - speedFactor() * amount);
