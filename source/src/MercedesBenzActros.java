@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public class MercedesBenzActros extends Car implements ILoadable {
+public class MercedesBenzActros extends Car implements ILoadable{
 
     private boolean hasCarTrailerConnected = false;
     private CarTrailer carTrailer = new CarTrailer(10);
@@ -31,6 +31,16 @@ public class MercedesBenzActros extends Car implements ILoadable {
         }
     }
 
+    public void addTrailer(int maxSize) {
+        carTrailer = new CarTrailer(maxSize);
+        hasCarTrailerConnected = true;
+    }
+
+    public void removeTrailer() {
+        carTrailer = null;
+        hasCarTrailerConnected = false;
+    }
+
     @Override
     public void load(Object object) {
         if (this != object) {
@@ -45,6 +55,9 @@ public class MercedesBenzActros extends Car implements ILoadable {
         }
         return null;
     }
+
+
+
 
 
 }
