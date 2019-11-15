@@ -11,7 +11,7 @@ public class Storage {
     }
 
     public void load(Object object){
-        if(storeableObjectType.getClass().equals(object.getClass())) {
+        if(storeableObjectType.equals(object.getClass())) {
             if(storedObjects.size() < maxSize) {
                 storedObjects.push(object);
             }
@@ -44,5 +44,9 @@ public class Storage {
             System.out.println("Cannot remove object as Storage is empty");
         }
         return removed;
+    }
+
+    public int size(){
+        return storedObjects.size();
     }
 }
