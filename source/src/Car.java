@@ -65,6 +65,8 @@ public abstract class Car implements IMovable{
     double getPosX(){ return posX; }
     double getPosY(){ return posY; }
     int getAngle(){ return angle; }
+    void setPosX(double x) { posX = x; }
+    void setPosY(double y) { posY = y; }
     void setColor(Color clr){ color = clr; }
     void setCurrentSpeed(double currentSpeed){ this.currentSpeed = currentSpeed; }
 
