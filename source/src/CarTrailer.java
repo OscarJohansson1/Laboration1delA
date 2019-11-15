@@ -13,7 +13,7 @@ public class CarTrailer implements IRaiseable, ILoadable {
     public int getAmountOfCars() {
         return storage.size();
     }
-
+//
     @Override
     public boolean isDown() {
         return trailerIsDown;
