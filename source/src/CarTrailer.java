@@ -4,15 +4,14 @@ import java.util.List;
 public class CarTrailer implements IRaiseable, ILoadable {
 
     private boolean trailerIsDown = true;
-    private List<Car> cars = new ArrayList<>();
     private Storage storage;
 
     public CarTrailer(int maxStorage) {
         this.storage = new Storage(Car.class, maxStorage);
-    }//
+    }
 
     public int getAmountOfCars() {
-        return cars.size();
+        return storage.size();
     }
 
     @Override
@@ -35,4 +34,13 @@ public class CarTrailer implements IRaiseable, ILoadable {
         trailerIsDown = true;
     }
 
+    @Override
+    public void load(Object object) {
+        storage.load(object);
+    }
+
+    @Override
+    public Object unload() {
+        return storage.removeLastStored();
+    }
 }

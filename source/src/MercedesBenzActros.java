@@ -31,12 +31,7 @@ public class MercedesBenzActros extends Car{
         }
     }
 
-    @Override
-    void load(){
 
-
-
-    }
 
 
 
