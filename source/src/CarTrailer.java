@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class CarTrailer implements IRaiseable, ILoadable {
+public class CarTrailer implements IRaiseable {
 
     private boolean trailerIsDown = true;
     private Storage storage;
@@ -34,12 +34,10 @@ public class CarTrailer implements IRaiseable, ILoadable {
         trailerIsDown = true;
     }
 
-    @Override
-    public void load(Object object) {
-        storage.load(object);
+    public void load(Car car) {
+        storage.load(car);
     }
 
-    @Override
     public Object unload() {
         return storage.removeLastStored();
     }

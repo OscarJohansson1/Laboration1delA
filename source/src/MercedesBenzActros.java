@@ -2,7 +2,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MercedesBenzActros extends Car implements ILoadable{
+public class MercedesBenzActros extends Car{
 
     private boolean hasCarTrailerConnected = false;
     private CarTrailer carTrailer = new CarTrailer(10);
@@ -53,20 +53,18 @@ public class MercedesBenzActros extends Car implements ILoadable{
         hasCarTrailerConnected = false;
     }
 
-    @Override
-    public void load(Object object) {
-        if (object instanceof Car) {
-            double xDifference = ((Car) object).getPosX() - getPosX();
-            double yDifference = ((Car) object).getPosY() - getPosY();
-            if (xDifference < 10 && yDifference < 10) {
-                if (this != object && getCurrentSpeed() == 0) {
-                    carTrailer.load(object);
-                }
+
+    public void load(Car object) {
+        double xDifference = object.getPosX() - getPosX();
+        double yDifference = object.getPosY() - getPosY();
+        if (xDifference < 10 && yDifference < 10) {
+            if (this != object && getCurrentSpeed() == 0) {
+                carTrailer.load(object);
             }
         }
     }
 
-    @Override
+
     public Object unload() {
         if (getCurrentSpeed() == 0) {
             return carTrailer.unload();

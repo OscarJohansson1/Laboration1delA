@@ -2,6 +2,10 @@ public interface ILoadable {
 
     void load(Object object);
 
-    Object unload();
+    Object removeAtIndex(int index);
+
+    Object removeFirstStored();
+
+    Object removeLastStored();
 
 }

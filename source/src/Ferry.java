@@ -1,10 +1,10 @@
-public class Ferry implements IMovable, ILoadable, IRaiseable{
+public class Ferry implements IMovable, IRaiseable{
 
     private Storage storage;
     private Boolean rampIsUp;
 
     public Ferry(int maxStorage){
-        this.storage = new Storage(Car.class, maxStorage);
+        this.storage = new Storage(maxStorage);
     }
 
     @Override
@@ -42,12 +42,10 @@ public class Ferry implements IMovable, ILoadable, IRaiseable{
         rampIsUp = Boolean.FALSE;
     }
 
-    @Override
-    public void load(Object object) {
-        storage.load(object);
+    public void load(Car car) {
+        storage.load(car);
     }
 
-    @Override
     public Object unload() {
         return storage.removeFirstStored();
     }
