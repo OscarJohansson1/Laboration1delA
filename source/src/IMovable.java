@@ -4,7 +4,7 @@
 
 public interface IMovable {
     /**
-     * Makes the car move forward (based on current direction).
+     * Move object forward (based on current direction).
      */
     void move();
 
