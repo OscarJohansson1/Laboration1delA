@@ -1,11 +1,11 @@
-public interface ILoadable {
+public interface ILoadable<A> {
 
-    void load(Object object);
+    void load(A object);
 
-    Object removeAtIndex(int index);
+    A removeAtIndex(int index);
 
-    Object removeFirstStored();
+    A removeFirstStored();
 
-    Object removeLastStored();
+    A removeLastStored();
 
 }

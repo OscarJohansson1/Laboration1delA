@@ -219,6 +219,9 @@ public class Test {
     @org.junit.Test
     public void testScania(){
 
+        //assertFalse("Garage is full, when it´s not supposed to", garage.isGarageFull());
     }
+
+
 
 }

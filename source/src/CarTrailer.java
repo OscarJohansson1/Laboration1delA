@@ -1,13 +1,10 @@
-import java.util.ArrayList;
-import java.util.List;
-
-public class CarTrailer implements IRaiseable {
+public class CarTrailer implements IRaiseable, ITransporter<Car> {
 
     private boolean trailerIsDown = true;
-    private Storage storage;
+    private Storage<Car> storage;
 
     public CarTrailer(int maxStorage) {
-        this.storage = new Storage(maxStorage);
+        this.storage = new Storage<>(maxStorage);
     }
 
     public int getAmountOfCars() {
@@ -34,11 +31,13 @@ public class CarTrailer implements IRaiseable {
         trailerIsDown = true;
     }
 
+    @Override
     public void load(Car car) {
         storage.load(car);
     }
 
-    public Object unload() {
+    @Override
+    public Car unload(Car car) {
         return storage.removeLastStored();
     }
 }

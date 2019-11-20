@@ -2,7 +2,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MercedesBenzActros extends Car{
+public class MercedesBenzActros extends Car implements ITransporter<Car>{
 
     private boolean hasCarTrailerConnected = false;
     private CarTrailer carTrailer = new CarTrailer(10);
@@ -64,10 +64,10 @@ public class MercedesBenzActros extends Car{
         }
     }
 
-
-    public Object unload() {
+    @Override
+    public Car unload(Car car) {
         if (getCurrentSpeed() == 0) {
-            return carTrailer.unload();
+            return carTrailer.unload(car);
         }
         return null;
     }

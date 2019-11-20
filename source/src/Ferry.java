@@ -1,13 +1,14 @@
 /**
  * Class for ferry type with the ability to load cars.
  */
+public class Ferry implements IMovable, IRaiseable, ITransporter<Car>{
 
-public class Ferry implements IMovable, IRaiseable{
 
     /**
      * Local storage for car-ferry
      */
-    private Storage storage;
+    private Storage<Car> storage;
+
 
     /**
      * Ramp for ferry (if and only if rampIsUp; cars can enter ferry
@@ -25,7 +26,7 @@ public class Ferry implements IMovable, IRaiseable{
      * @param maxStorage limit for amount of cars storeable.
      */
     public Ferry(int maxStorage){
-        this.storage = new Storage(maxStorage);
+        this.storage = new Storage<>(maxStorage);
     }
 
     @Override
@@ -64,8 +65,14 @@ public class Ferry implements IMovable, IRaiseable{
         rampIsUp = Boolean.FALSE;
     }
 
+    @Override
     public void load(Car car) {
         storage.load(car);
+    }
+
+    @Override
+    public Car unload(Car car) {
+        return storage.removeFirstStored();
     }
 
     public Object unload() {
