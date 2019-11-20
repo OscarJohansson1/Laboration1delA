@@ -1,23 +1,14 @@
-public class Garage implements ILoadable {
+public class Garage<T> {
     private Storage storage;
-    private Car[] acceptableCars;
 
-    public Garage(Car[] acceptableCars, int maxSize){
-        this.storage = new Storage(Car.class, maxSize);
-        this.acceptableCars = acceptableCars;
+    public Garage(int maxSize){
+        storage = new Storage(maxSize);
     }
 
-    @Override
-    public void load(Object car) {
-        for(Car acceptableCar : acceptableCars){
-            if(car.getClass() == acceptableCar.getClass()){
-                storage.load(car);
-                break;
-            }
-        }
+    public void load(T car) {
+        storage.load(car);
     }
 
-    @Override
     public Object unload() {
         return storage.removeFirstStored();
     }

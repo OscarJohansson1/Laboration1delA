@@ -7,7 +7,7 @@ public class CarTrailer implements IRaiseable, ILoadable {
     private Storage storage;
 
     public CarTrailer(int maxStorage) {
-        this.storage = new Storage(Car.class, maxStorage);
+        this.storage = new Storage(maxStorage);
     }
 
     public int getAmountOfCars() {

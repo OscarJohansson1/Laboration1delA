@@ -209,4 +209,12 @@ public class Test {
         assertEquals("Wrong Car", unCoolCar, ferry.unload());
     }
 
+    @org.junit.Test
+    public void testCreatingGarage(){
+        Garage<Volvo240> garage = new Garage<>(10);
+        //garage.load(saab95);
+        garage.load(volvo240);
+
+    }
+
 }
