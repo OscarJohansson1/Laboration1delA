@@ -1,14 +1,36 @@
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class for storing objects.
+ * Intended to be used in other classes with modifications to their ILoadable functions
+ */
+
 public class Storage implements ILoadable {
+    /**
+     * Max size of storage
+     * @param maxSize
+     */
     private int maxSize;
+
+    /**
+     * List with stored objects
+     * @param storedObjects
+     */
     private List<Object> storedObjects = new ArrayList<>();
 
+    /**
+     * Constructor with maxsize
+     * @param maxSize
+     */
     public Storage(int maxSize) {
         this.maxSize = maxSize;
     }
 
+    /**
+     * Loads object unless maxSize is reached
+     * @param object
+     */
     @Override
     public void load(Object object) {
         if (storedObjects.size() < maxSize) {
