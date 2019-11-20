@@ -214,6 +214,10 @@ public class Test {
         Garage<Volvo240> garage = new Garage<>(10);
         //garage.load(saab95);
         garage.load(volvo240);
+    }
+
+    @org.junit.Test
+    public void testScania(){
 
     }
 

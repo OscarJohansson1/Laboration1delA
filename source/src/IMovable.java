@@ -17,5 +17,4 @@ public interface IMovable {
      * Turn 90 degrees to the right.
      */
     void turnRight();
-
 }

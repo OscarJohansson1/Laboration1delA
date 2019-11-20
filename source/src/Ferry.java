@@ -1,6 +1,18 @@
+/**
+ * Class for ferry type with the ability to load cars.
+ */
+
 public class Ferry implements IMovable, IRaiseable{
 
+    /**
+     * Local storage for car-ferry
+     */
     private Storage storage;
+
+    /**
+     * Ramp for ferry (if and only if rampIsUp; cars can enter ferry
+     * Uses lower() and raise() to change status and isFullyRaised() to check status.
+     */
     private Boolean rampIsUp;
     private double currentSpeed;
     private double posX;
@@ -8,6 +20,10 @@ public class Ferry implements IMovable, IRaiseable{
     private int angle;
 
 
+    /**
+     * Constructor for Ferry.
+     * @param maxStorage limit for amount of cars storeable.
+     */
     public Ferry(int maxStorage){
         this.storage = new Storage(maxStorage);
     }
