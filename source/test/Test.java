@@ -198,6 +198,9 @@ public class Test {
         assertEquals("Gas doesn't increase current speed properly", 0, Double.compare(saab95.getCurrentSpeed(), 0));
     }
 
+    /**
+     * Test Loading and unloading of ferry with cars.
+     */
     @org.junit.Test
     public void testFerryLoadUnload(){
         Ferry ferry = new Ferry(2);
@@ -209,19 +212,40 @@ public class Test {
         assertEquals("Wrong Car", unCoolCar, ferry.unload());
     }
 
+    /**
+     * Test Loading and unloading of garage with cars.
+     */
     @org.junit.Test
-    public void testCreatingGarage(){
+    public void testGarage(){
         Garage<Volvo240> garage = new Garage<>(10);
-        //garage.load(saab95);
         garage.load(volvo240);
+        assertEquals("Car not properly unload ",volvo240, garage.unload());
     }
 
+    /**
+     * Test for loading and unloading car transport
+     */
+    @org.junit.Test
+    public void testCarTransport(){
+        MercedesBenzActros carTransport = new MercedesBenzActros();
+        carTransport.load(saab95);
+        carTransport.load(volvo240);
+        assertEquals("Wrong car unloaded", carTransport.unload(), volvo240);
+        assertEquals("Wrong car unloaded", carTransport.unload(), saab95);
+        carTransport.load(saab95);
+        carTransport.setCurrentSpeed(1337);
+        assertEquals("Car cannot be unloaded when transporter is moving!", carTransport.unload(), null);
+    }
+
+    /**
+     * Test for properly loading trailer to scania
+     */
     @org.junit.Test
     public void testScania(){
+        Scania scania = new Scania();
+        scania.addTrailer();
+        assertTrue("Trailer not attatched when it should be", scania.hasTrailer());
 
         //assertFalse("Garage is full, when it´s not supposed to", garage.isGarageFull());
     }
-
-
-
 }

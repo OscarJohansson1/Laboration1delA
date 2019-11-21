@@ -20,7 +20,6 @@ public class Storage<T> implements ILoadable<T> {
     private List<T> storedObjects = new ArrayList<>();
 
 
-
     /**
      * Constructor with maxsize
      * @param maxSize
