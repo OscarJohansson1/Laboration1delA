@@ -55,7 +55,7 @@ public class MercedesBenzActros extends Car implements ITransporter<Car>{
         hasCarTrailerConnected = false;
     }
 
-
+    //TODO kolla om bilen har släp
     public void load(Car object) {
         double xDifference = object.getPosX() - getPosX();
         double yDifference = object.getPosY() - getPosY();
