@@ -6,8 +6,9 @@ import java.lang.Math;
  * created and the class is therefore abstract and serves as a template.
  */
 
-public abstract class Car implements IMovable{
+public abstract class Car implements IMovable, ITransportable{
 
+    private boolean isBeingTransported = false;
     /**
      * Number of doors on the car
       */
@@ -41,6 +42,8 @@ public abstract class Car implements IMovable{
      */
     private int angle;
 
+    private boolean isTransportable = false;
+
     /**
      * Constructor for shared variables from car-models.
      * @param nrDoors number of doors in the car
@@ -57,18 +60,82 @@ public abstract class Car implements IMovable{
     }
 
     // Getters and Setters
+
+    /**
+     * Get number of doors on car.
+     * @return number of doors
+     */
     int getNrDoors(){ return nrDoors; }
+
+    /**
+     * Get engine power of car.
+     * @return engine power
+     */
     double getEnginePower(){ return enginePower; }
+
+    /**
+     * Get current speed of car.
+     * @return current speed
+     */
     double getCurrentSpeed(){ return currentSpeed; }
+
+    /**
+     * Get color of car.
+     * @return color
+     */
     Color getColor(){ return color; }
+
+    /**
+     * Get model name on car.
+     * @return model name
+     */
     String getModelName(){ return modelName; }
+
+    /**
+     * Get x-position of car.
+     * @return x-position
+     */
     double getPosX(){ return posX; }
+
+    /**
+     * Get y-position of car.
+     * @return y-position
+     */
     double getPosY(){ return posY; }
+
+    /**
+     * Get angle car is currently facing.
+     * @return angle
+     */
     int getAngle(){ return angle; }
+
+    boolean getTransportable(){ return isTransportable; }
+
+    /**
+     * Set x-position of car.
+     * @param x new x-position
+     */
     void setPosX(double x) { posX = x; }
+
+    /**
+     * Set y-position of car.
+     * @param y new y-position
+     */
     void setPosY(double y) { posY = y; }
+
+    /**
+     * Set color of car.
+     * @param clr new color
+     */
     void setColor(Color clr){ color = clr; }
+
+    /**
+     * Set current speed of car.
+     * @param currentSpeed new current speed.
+     */
     void setCurrentSpeed(double currentSpeed){ this.currentSpeed = currentSpeed; }
+
+    void setTransportable(boolean b){ isTransportable = b; }
 
     // Shared methods between different car models, that are equal to all models.
 
@@ -110,8 +177,10 @@ public abstract class Car implements IMovable{
      */
     @Override
     public void move() {
-        posX += Math.cos(Math.toRadians(angle))*currentSpeed;
-        posY += Math.sin(Math.toRadians(angle))*currentSpeed;
+        if (!isBeingTransported) {
+            posX += Math.cos(Math.toRadians(angle)) * currentSpeed;
+            posY += Math.sin(Math.toRadians(angle)) * currentSpeed;
+        }
     }
 
     /**
@@ -154,5 +223,20 @@ public abstract class Car implements IMovable{
                 setCurrentSpeed(0);
             }
         }
+    }
+
+    @Override
+    public void startTransporting() {
+        isBeingTransported = true;
+    }
+
+    @Override
+    public void stopTransporting() {
+        isBeingTransported = false;
+    }
+
+    @Override
+    public boolean isBeingTransported() {
+        return isBeingTransported;
     }
 }

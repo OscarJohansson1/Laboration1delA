@@ -3,7 +3,7 @@ import java.util.List;
 
 /**
  * Class for storing objects.
- * Intended to be used in other classes with modifications to their ILoadable functions
+ * Intended, but not limited, to be used in other classes which implements ITransporter functions.
  */
 public class Storage<T> implements ILoadable<T> {
 

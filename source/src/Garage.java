@@ -1,3 +1,6 @@
+/**
+ * The Garage class describes garage where you can store things.
+ */
 public class Garage<T> implements ITransporter<T> {
     private Storage<T> storage;
 
@@ -11,10 +14,9 @@ public class Garage<T> implements ITransporter<T> {
     }
 
     @Override
-    public T unload(T t) {
+    public T unload() {
         return storage.removeFirstStored();
     }
-
 
     public boolean isGarageFull() {
         return storage.isFull();
