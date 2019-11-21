@@ -217,9 +217,11 @@ public class Test {
     }
 
     @org.junit.Test
-    public void testGarage(){
-        Garage garage = new Garage(5);
-        garage.unload();
+    public void testScania(){
+
+        //assertFalse("Garage is full, when it´s not supposed to", garage.isGarageFull());
     }
+
+
 
 }
