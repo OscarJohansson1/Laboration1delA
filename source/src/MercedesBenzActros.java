@@ -1,8 +1,10 @@
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
-
-public class MercedesBenzActros extends Car{
+/**
+ * The MercedesBenzActros class describes a car-transporter of the type Mercedes-Benz Actros.
+ */
+public class MercedesBenzActros extends Car implements ITransporter<Car>{
 
     private boolean hasCarTrailerConnected = false;
     private CarTrailer carTrailer = new CarTrailer(10);
@@ -64,8 +66,8 @@ public class MercedesBenzActros extends Car{
         }
     }
 
-
-    public Object unload() {
+    @Override
+    public Car unload() {
         if (getCurrentSpeed() == 0) {
             return carTrailer.unload();
         }

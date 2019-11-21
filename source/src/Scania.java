@@ -1,5 +1,7 @@
 import java.awt.*;
-
+/**
+ * The Scania class describes a truck of the type Scania.
+ */
 public class Scania extends Car {
 
     private Trailer trailer;

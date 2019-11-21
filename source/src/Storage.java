@@ -1,55 +1,80 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Storage implements ILoadable {
-    private int maxSize;
-    private List<Object> storedObjects = new ArrayList<>();
+/**
+ * Class for storing objects.
+ * Intended, but not limited, to be used in other classes which implements ITransporter functions.
+ */
+public class Storage<T> implements ILoadable<T> {
 
-    public Storage(int maxSize){
+    /**
+     * Max size of storage
+     * @param maxSize
+     */
+    private int maxSize;
+
+    /**
+     * List with stored objects
+     * @param storedObjects
+     */
+    private List<T> storedObjects = new ArrayList<>();
+
+
+
+    /**
+     * Constructor with maxsize
+     * @param maxSize
+     */
+    public Storage(int maxSize) {
         this.maxSize = maxSize;
     }
 
+    /**
+     * Loads object unless maxSize is reached
+     * @param object
+     */
     @Override
-    public void load(Object object){
+    public void load(T object){
         if(storedObjects.size() < maxSize) {
             storedObjects.add(object);
         }
     }
 
     @Override
-    public Object removeAtIndex(int i){
-        Object removed = new Object();
+    public T removeAtIndex(int i){
         if(storedObjects.size() > 0){
-            removed = storedObjects.remove(i);
+            return storedObjects.remove(i);
         }
         else{
             System.out.println("Cannot remove object as Storage is empty");
         }
-        return removed;
+        return null;
     }
 
     @Override
-    public Object removeFirstStored(){
-        Object removed = new Object();
+    public T removeFirstStored(){
         if(storedObjects.size() > 0){
-            removed = storedObjects.remove(0);
+            return storedObjects.remove(0);
         }
         else{
             System.out.println("Cannot remove object as Storage is empty");
         }
-        return removed;
+        return null;
     }
 
     @Override
-    public Object removeLastStored(){
-        Object removed = new Object();
+    public T removeLastStored(){
         if(storedObjects.size() > 0){
-            removed = storedObjects.remove(storedObjects.size() - 1);
+            return storedObjects.remove(storedObjects.size() - 1);
         }
         else{
             System.out.println("Cannot remove object as Storage is empty");
         }
-        return removed;
+        return null;
+    }
+
+    public boolean isFull() {
+        return storedObjects.size() == maxSize;
     }
 
     public int size(){

@@ -1,11 +1,15 @@
-public interface ILoadable {
+/**
+ * Interface for classes which store objects of type A.
+ * @param <A>
+ */
+public interface ILoadable<A> {
 
-    void load(Object object);
+    void load(A object);
 
-    Object removeAtIndex(int index);
+    A removeAtIndex(int index);
 
-    Object removeFirstStored();
+    A removeFirstStored();
 
-    Object removeLastStored();
+    A removeLastStored();
 
 }

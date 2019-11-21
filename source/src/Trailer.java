@@ -1,3 +1,6 @@
+/**
+ * The Trailer class describes a trailer which can be raised.
+ */
 public class Trailer implements IRaiseable {
 
     private boolean trailerIsDown = true;
@@ -29,6 +32,7 @@ public class Trailer implements IRaiseable {
         angle += angleToRaise;
         if(angle > maximumAngle) {
             angle = maximumAngle;
+            trailerIsDown = false;
         }
     }
 
@@ -41,6 +45,7 @@ public class Trailer implements IRaiseable {
         angle -= angleToLower;
         if(angle < 0) {
             angle = 0;
+            trailerIsDown = true;
         }
     }
 }
