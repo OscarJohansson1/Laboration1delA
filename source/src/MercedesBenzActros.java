@@ -1,7 +1,9 @@
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * The MercedesBenzActros class describes a car-transporter of the type Mercedes-Benz Actros.
+ */
 public class MercedesBenzActros extends Car implements ITransporter<Car>{
 
     private boolean hasCarTrailerConnected = false;

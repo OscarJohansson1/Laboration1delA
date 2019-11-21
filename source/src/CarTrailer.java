@@ -1,3 +1,6 @@
+/**
+ * The CarTrailer class describes a trailer which store cars.
+ */
 public class CarTrailer implements IRaiseable, ITransporter<Car> {
 
     private boolean trailerIsDown = true;
