@@ -4,9 +4,7 @@ public class Trailer implements IRaiseable {
     private int angle = 0;
     private int maximumAngle;
 
-    Trailer(int maximumAngle) {
-        this.maximumAngle = maximumAngle;
-    }
+    Trailer(int maximumAngle) { this.maximumAngle = maximumAngle; }
 
     public int getAngle() {
         return angle;
