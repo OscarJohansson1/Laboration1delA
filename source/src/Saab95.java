@@ -16,6 +16,7 @@ public class Saab95 extends Car{
      */
     Saab95(){
         super(2,125, Color.red,"Saab95");
+        setTransportable(true);
         turboOn = false;
     }
 
@@ -63,6 +64,5 @@ public class Saab95 extends Car{
     public void decrementSpeed(double amount){
         setCurrentSpeed(getCurrentSpeed() - speedFactor() * amount);
     }
-
 
 }
