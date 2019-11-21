@@ -38,7 +38,7 @@ public class CarTrailer implements IRaiseable {
         storage.load(car);
     }
 
-    public Object unload() {
-        return storage.removeLastStored();
+    public Car unload() {
+        return (Car) storage.removeLastStored();
     }
 }

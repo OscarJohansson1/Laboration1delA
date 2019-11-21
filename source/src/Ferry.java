@@ -68,7 +68,7 @@ public class Ferry implements IMovable, IRaiseable{
         storage.load(car);
     }
 
-    public Object unload() {
-        return storage.removeFirstStored();
+    public Car unload() {
+        return (Car) storage.removeFirstStored();
     }
 }

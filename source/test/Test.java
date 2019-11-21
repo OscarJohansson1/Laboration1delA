@@ -217,8 +217,9 @@ public class Test {
     }
 
     @org.junit.Test
-    public void testScania(){
-
+    public void testGarage(){
+        Garage garage = new Garage(5);
+        garage.unload();
     }
 
 }
