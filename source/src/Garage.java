@@ -14,7 +14,7 @@ public class Garage<T> implements ITransporter<T> {
     }
 
     @Override
-    public T unload(T t) {
+    public T unload() {
         return storage.removeFirstStored();
     }
 

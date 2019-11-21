@@ -67,9 +67,9 @@ public class MercedesBenzActros extends Car implements ITransporter<Car>{
     }
 
     @Override
-    public Car unload(Car car) {
+    public Car unload() {
         if (getCurrentSpeed() == 0) {
-            return carTrailer.unload(car);
+            return carTrailer.unload();
         }
         return null;
     }

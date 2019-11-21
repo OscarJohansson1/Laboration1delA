@@ -57,17 +57,77 @@ public abstract class Car implements IMovable{
     }
 
     // Getters and Setters
+
+    /**
+     * Get number of doors on car.
+     * @return number of doors
+     */
     int getNrDoors(){ return nrDoors; }
+
+    /**
+     * Get engine power of car.
+     * @return engine power
+     */
     double getEnginePower(){ return enginePower; }
+
+    /**
+     * Get current speed of car.
+     * @return current speed
+     */
     double getCurrentSpeed(){ return currentSpeed; }
+
+    /**
+     * Get color of car.
+     * @return color
+     */
     Color getColor(){ return color; }
+
+    /**
+     * Get model name on car.
+     * @return model name
+     */
     String getModelName(){ return modelName; }
+
+    /**
+     * Get x-position of car.
+     * @return x-position
+     */
     double getPosX(){ return posX; }
+
+    /**
+     * Get y-position of car.
+     * @return y-position
+     */
     double getPosY(){ return posY; }
+
+    /**
+     * Get angle car is currently facing.
+     * @return angle
+     */
     int getAngle(){ return angle; }
+
+    /**
+     * Set x-position of car.
+     * @param x new x-position
+     */
     void setPosX(double x) { posX = x; }
+
+    /**
+     * Set y-position of car.
+     * @param y new y-position
+     */
     void setPosY(double y) { posY = y; }
+
+    /**
+     * Set color of car.
+     * @param clr new color
+     */
     void setColor(Color clr){ color = clr; }
+
+    /**
+     * Set current speed of car.
+     * @param currentSpeed new current speed.
+     */
     void setCurrentSpeed(double currentSpeed){ this.currentSpeed = currentSpeed; }
 
     // Shared methods between different car models, that are equal to all models.
