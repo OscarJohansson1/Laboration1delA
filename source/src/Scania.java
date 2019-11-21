@@ -36,6 +36,8 @@ public class Scania extends Car {
         trailer.lower(amount);
     }
 
+    public boolean getTrailerConnected(){return hasTrailerConnected;}
+
     @Override
     public double speedFactor() {
         if (hasTrailerConnected) {
