@@ -33,10 +33,13 @@ public class Storage<T> implements ILoadable<T> {
      * @param object
      */
     @Override
-    public void load(T object){
+    public boolean load(T object){
+        boolean loadSuccessful = Boolean.FALSE;
         if(storedObjects.size() < maxSize) {
             storedObjects.add(object);
+            loadSuccessful = Boolean.TRUE;
         }
+        return loadSuccessful;
     }
 
     @Override
