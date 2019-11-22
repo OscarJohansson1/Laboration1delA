@@ -4,7 +4,7 @@
 
 public interface IMovable {
     /**
-     * Move object forward (based on current direction).
+     * Move object forward if allowed (based on current direction).
      */
     void move();
 
