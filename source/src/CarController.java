@@ -48,7 +48,7 @@ public class CarController {
                 car.move();
                 int x = (int) Math.round(car.getPosX());
                 int y = (int) Math.round(car.getPosY());
-                if (x > 700 || x < 0) {
+                if (x > frame.drawPanel.getWidth() - 100 || x < 0) {
                     car.turnLeft();
                     car.turnLeft();
                 }
