@@ -15,7 +15,7 @@ public class Volvo240 extends Car {
      * Constructor for class Volvo240.
      */
     Volvo240(){
-        super(4, 100, Color.black, "Volvo240");
+        super(4, 110, Color.black, "Volvo240");
         setTransportable(true);
     }
 
