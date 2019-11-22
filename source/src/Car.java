@@ -86,7 +86,7 @@ public abstract class Car implements IMovable, ITransportable{
     Color getColor(){ return color; }
 
     /**
-     * Get model name on car.
+     * Get model name of car.
      * @return model name
      */
     String getModelName(){ return modelName; }

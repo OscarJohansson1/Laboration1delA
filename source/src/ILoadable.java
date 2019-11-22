@@ -7,8 +7,9 @@ public interface ILoadable<A> {
     /**
      * Load object of type A and add to list of type A.
      * @param a variable of type A
+     * @return if loading successful: true, else: false
      */
-    void load(A a);
+    boolean load(A a);
 
     /**
      * Remove object from specific index of list
