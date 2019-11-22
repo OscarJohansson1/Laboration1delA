@@ -40,6 +40,7 @@ public class Scania extends Car {
 
     /**
      * Raises the angle of the trailer by an amount of degrees.
+     * @param amount amount of degrees to raise the trailer
      */
     public void raiseTrailer(int amount) {
         trailer.raise(amount);
@@ -47,6 +48,7 @@ public class Scania extends Car {
 
     /**
      * Lowers the angle of the trailer by an amount of degrees.
+     * @param amount amount of degrees to lower the trailer
      */
     public void lowerTrailer(int amount) {
         trailer.lower(amount);

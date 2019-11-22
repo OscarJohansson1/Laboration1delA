@@ -7,6 +7,7 @@ public interface ILoadable<A> {
     /**
      * Load object of type A and add to list of type A.
      * @param a variable of type A
+     * @return if loading successful: true, else: false
      */
     boolean load(A a);
 

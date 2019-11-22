@@ -24,7 +24,8 @@ public class Trailer implements IRaiseable {
     Trailer(int maximumAngle) { this.maximumAngle = maximumAngle; }
 
     /**
-     * Getter for the angle variable
+     * Getter for the angle variable.
+     * @return angle current angle of trailer
      */
     public int getAngle() {
         return angle;

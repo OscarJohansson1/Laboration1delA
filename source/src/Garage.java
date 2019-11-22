@@ -14,6 +14,7 @@ public class Garage<T> implements ITransporter<T> {
 
     /**
      * Constructor for class Garage
+     * @param maxSize max size of the storage
      */
     public Garage(int maxSize){
         storage = new Storage(maxSize);
@@ -36,7 +37,8 @@ public class Garage<T> implements ITransporter<T> {
     }
 
     /**
-     *
+     * Determines if garage is full
+     * @return if full: true, else: false
      */
     public boolean isGarageFull() {
         return storage.isFull();
