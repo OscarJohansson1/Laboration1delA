@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /*
 * This class represents the Controller part in the MVC pattern.
@@ -47,6 +48,10 @@ public class CarController {
                 car.move();
                 int x = (int) Math.round(car.getPosX());
                 int y = (int) Math.round(car.getPosY());
+                if (x > 700 || x < 0) {
+                    car.turnLeft();
+                    car.turnLeft();
+                }
                 frame.drawPanel.moveit(x, y);
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
@@ -67,6 +72,50 @@ public class CarController {
         double brake = ((double) amount / 100);
         for (Car car : cars) {
             car.brake(brake);
+        }
+    }
+
+    void turboOn() {
+        for (Car car : cars) {
+            if (car instanceof Saab95) {
+                ((Saab95) car).setTurboOn();
+            }
+        }
+    }
+
+    void turboOff() {
+        for (Car car : cars) {
+            if (car instanceof Saab95) {
+                ((Saab95) car).setTurboOff();
+            }
+        }
+    }
+
+    void liftBed() {
+        for (Car car : cars) {
+            if (car instanceof Scania) {
+                ((Scania) car).raiseTrailer(1);
+            }
+        }
+    }
+
+    void lowerBed() {
+        for (Car car : cars) {
+            if (car instanceof Scania) {
+                ((Scania) car).lowerTrailer(1);
+            }
+        }
+    }
+
+    void startCars() {
+        for (Car car : cars) {
+            car.startEngine();
+        }
+    }
+
+    void stopCars(){
+        for (Car car : cars) {
+            car.stopEngine();
         }
     }
 }
