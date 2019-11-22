@@ -9,8 +9,6 @@ public class Garage<T extends Car> implements ITransporter<T> {
      */
     private Storage<T> storage;
 
-
-
     /**
      * Constructor for class Garage
      * @param maxSize max size of the storage
