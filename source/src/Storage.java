@@ -9,21 +9,21 @@ public class Storage<T> implements ILoadable<T> {
 
     /**
      * Max size of storage
-     * @param maxSize
+     * maxSize
      */
     private int maxSize;
 
     /**
      * List with stored objects
-     * @param storedObjects
+     * storedObjects
      */
     private List<T> storedObjects = new ArrayList<>();
 
 
 
     /**
-     * Constructor with maxsize
-     * @param maxSize
+     * Constructor for Storage
+     * @param maxSize max size of the storage
      */
     public Storage(int maxSize) {
         this.maxSize = maxSize;
@@ -31,7 +31,7 @@ public class Storage<T> implements ILoadable<T> {
 
     /**
      * Loads object unless maxSize is reached
-     * @param object
+     * @param object object of interest,the object which we want to load
      */
     @Override
     public void load(T object){
@@ -40,6 +40,10 @@ public class Storage<T> implements ILoadable<T> {
         }
     }
 
+    /**
+     * Removes the object with index 'i'.
+     * @param i index of object which will be removed
+     */
     @Override
     public T removeAtIndex(int i){
         if(storedObjects.size() > 0){
@@ -50,7 +54,9 @@ public class Storage<T> implements ILoadable<T> {
         }
         return null;
     }
-
+    /**
+     * Removes the object which was stored first. In other words the object from the "top" of the list.
+     */
     @Override
     public T removeFirstStored(){
         if(storedObjects.size() > 0){
@@ -62,6 +68,9 @@ public class Storage<T> implements ILoadable<T> {
         return null;
     }
 
+    /**
+     * Removes the object which was stored last. In other words the object from the "bottom" of the list.
+     */
     @Override
     public T removeLastStored(){
         if(storedObjects.size() > 0){
@@ -73,64 +82,21 @@ public class Storage<T> implements ILoadable<T> {
         return null;
     }
 
+    /**
+     * Checks if the storage is full.
+     * @return if full: true, else: false
+     */
     public boolean isFull() {
         return storedObjects.size() == maxSize;
     }
 
-    public int size(){
-        return storedObjects.size();
-    }
 
-    /*
-
-    private Class<?> storeableObjectType;
-    private int maxSize;
-    private ArrayDeque <Object> storedObjects = new ArrayDeque<>();
-
-    public Storage(Class<?> objectType, int maxSize){
-        this.maxSize = maxSize;
-        this.storeableObjectType = objectType;
-    }
-
-    public void load(T object){
-        if(storeableObjectType.equals(object.getClass()) ||
-                storeableObjectType.equals(object.getClass().getSuperclass())) {
-            if(storedObjects.size() < maxSize) {
-                storedObjects.push(object);
-            }
-            else{
-                System.out.println("Cannot store more objects.");
-            }
-        }
-        else {
-            System.out.println("Cannot store this type of object.");
-        }
-    }
-
-    public Object removeFirstStored(){
-        Object removed = new Object();
-        if(storedObjects.size() > 0){
-            removed = storedObjects.removeLast();
-        }
-        else{
-            System.out.println("Cannot remove object as Storage is empty");
-        }
-        return removed;
-    }
-
-    public Object removeLastStored(){
-        Object removed = new Object();
-        if(storedObjects.size() > 0){
-            removed = storedObjects.removeFirst();
-        }
-        else{
-            System.out.println("Cannot remove object as Storage is empty");
-        }
-        return removed;
-    }
-
-    public int size(){
-        return storedObjects.size();
-    }
+    /**
+     * Determines the size of the list of all stored objects
+     * @return size of list of stored items
      */
+    public int size(){
+        return storedObjects.size();
+    }
+
 }

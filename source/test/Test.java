@@ -217,33 +217,26 @@ public class Test {
     }
 
     @org.junit.Test
-    public void testScaniaTrailerStatus(){
+    public void testScaniaNoTrailerToRemove(){
 
         Scania s = new Scania();
 
         s.removeTrailer();
-
-        s.addTrailer();
-        assertTrue("Trailer is succesfully added to Scania.", s.getTrailerConnected());
-
-        s.removeTrailer();
-
-        public void addTrailer() {
-            trailer = new Trailer(70);
-            hasTrailerConnected = true;
-        }
-
-        public void removeTrailer() {
-            trailer = null;
-            hasTrailerConnected = false;
-        }
-
-
+        assertFalse("No trailer to remove from Scania.", s.getTrailerConnected());
 
         //assertFalse("Garage is full, when it´s not supposed to", garage.isGarageFull());
     }
 
+    @org.junit.Test
+    public void testScaniaRemoveTrailer(){
 
+        Scania s = new Scania();
 
+        s.addTrailer();
+
+        s.removeTrailer();
+        assertFalse("Trailer is succesfully removed from Scania.", s.getTrailerConnected());
+
+    }
 
 }
