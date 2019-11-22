@@ -264,4 +264,32 @@ public class Test {
         storage.load(saab95);
         assertEquals("Wrong car unloaded", storage.removeLastStored(), saab95);
     }
+
+    @org.junit.Test
+    public void testTrailerIsDown(){
+        Trailer trailer = new Trailer(10);
+
+        trailer.raise();
+        trailer.lower();
+        trailer.lower(2);
+
+        assertEquals("Angel is suppose to be 0, but is" + trailer.getAngle(), 0, trailer.getAngle());
+        assertTrue("Trailer isn't down, when supposed to be down", trailer.isDown());
+    }
+
+    @org.junit.Test
+    public void testTrailerIsFullyRaised(){
+        Trailer trailer = new Trailer(10);
+        trailer.raise(15);
+
+        assertTrue("Trailer isn't fully raised when supposed to", trailer.isFullyRaised());
+    }
+
+    @org.junit.Test
+    public void testTrailerGetAngle(){
+        Trailer trailer = new Trailer(10);
+        trailer.raise(5);
+
+        assertEquals("Wrong angle after raise is called",5, trailer.getAngle());
+    }
 }
