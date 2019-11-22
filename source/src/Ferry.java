@@ -101,14 +101,18 @@ public class Ferry implements IMovable, IRaiseable, ITransporter<Car>{
     }
 
     /**
-     * Method from ITransporter...
-     * @param car
+     * Method from ITransporter which load the Ferry with a new car
+     * @param car the car to load on the Ferry
      */
     @Override
     public void load(Car car) {
         storage.load(car);
     }
 
+    /**
+     * Method from ITransporter which unload the first car stored in the storage
+     * @return the first car in the storage
+     */
     @Override
     public Car unload() {
         return storage.removeFirstStored();

@@ -16,6 +16,7 @@ public class Volvo240 extends Car {
      */
     Volvo240(){
         super(4, 100, Color.black, "Volvo240");
+        setTransportable(true);
     }
 
     // Following methods need to be implemented according to superclass

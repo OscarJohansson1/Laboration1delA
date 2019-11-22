@@ -52,6 +52,10 @@ public class Scania extends Car {
         trailer.lower(amount);
     }
 
+    public boolean hasTrailer(){
+        return hasTrailerConnected;
+    }
+
     /**
      * Get boolean value of whether a trailers is connected to Scania or not.
      * @return If a trailer is connected: true, else: false
