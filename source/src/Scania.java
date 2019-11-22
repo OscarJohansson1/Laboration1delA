@@ -60,9 +60,14 @@ public class Scania extends Car {
 
     @Override
     public void move() {
-        if (trailer.isDown()) {
-            super.move();
+        if(hasTrailerConnected) {
+            if (trailer.isDown()) {
+                super.move();
+            }
         }
+        else{
+            super.move();
+            }
     }
 
     public boolean hasTrailer(){
