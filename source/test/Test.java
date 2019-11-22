@@ -234,7 +234,7 @@ public class Test {
         assertEquals("Wrong car unloaded", carTransport.unload(), saab95);
         carTransport.load(saab95);
         carTransport.setCurrentSpeed(1337);
-        assertEquals("Car cannot be unloaded when transporter is moving!", carTransport.unload(), null);
+        assertNull("Car cannot be unloaded when transporter is moving!", carTransport.unload());
     }
 
     /**
@@ -247,13 +247,6 @@ public class Test {
 
         s.removeTrailer();
         assertFalse("No trailer to remove from Scania.", s.getTrailerConnected());
-    }
-    public void testScania(){
-        Scania scania = new Scania();
-        scania.addTrailer();
-        assertTrue("Trailer not attatched when it should be", scania.hasTrailer());
-
-        //assertFalse("Garage is full, when it´s not supposed to", garage.isGarageFull());
     }
 
     /**
@@ -272,6 +265,9 @@ public class Test {
         assertEquals("Wrong car unloaded", storage.removeLastStored(), saab95);
     }
 
+    /**
+     * Test if the trailer is down after it has been raised and lowered 'below' minimum.
+     */
     @org.junit.Test
     public void testTrailerIsDown(){
         Trailer trailer = new Trailer(10);
@@ -284,10 +280,12 @@ public class Test {
         assertTrue("Trailer isn't down, when supposed to be down", trailer.isDown());
     }
 
+    /**
+     * Test if the trailer is fully raised after it has been raised 'above' maximum.
+     */
     @org.junit.Test
     public void testTrailerIsFullyRaised(){
 
-        Scania s = new Scania();
         Trailer trailer = new Trailer(10);
         trailer.raise(15);
 
@@ -305,6 +303,9 @@ public class Test {
 
         assertFalse("Trailer is succesfully removed from Scania.", s.getTrailerConnected());    }
 
+    /**
+     * Test if the trailer changes correctly when raised is called
+     */
     @org.junit.Test
     public void testTrailerGetAngle(){
         Trailer trailer = new Trailer(10);

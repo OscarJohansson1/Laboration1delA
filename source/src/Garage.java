@@ -4,7 +4,6 @@
  */
 public class Garage<T> implements ITransporter<T> {
 
-
     /**
      * Stores all Car objects for the Garage class
      */
