@@ -256,6 +256,22 @@ public class Test {
         //assertFalse("Garage is full, when it´s not supposed to", garage.isGarageFull());
     }
 
+    /**
+     * Test for loading and unloading storage with class
+     */
+    @org.junit.Test
+    public void testStorage(){
+        Storage<Car> storage = new Storage<>(3);
+        storage.load(saab95);
+        storage.load(volvo240);
+        storage.load(volvo240);
+        assertFalse("Car was loaded when storage was full!!", storage.load(saab95));
+        assertEquals("Wrong car unloaded", storage.removeAtIndex(1), volvo240);
+        assertEquals("Wrong car unloaded", storage.removeFirstStored(), saab95);
+        storage.load(saab95);
+        assertEquals("Wrong car unloaded", storage.removeLastStored(), saab95);
+    }
+
     @org.junit.Test
     public void testTrailerIsDown(){
         Trailer trailer = new Trailer(10);
