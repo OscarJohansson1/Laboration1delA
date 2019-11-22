@@ -257,10 +257,6 @@ public class Test {
     }
 
     @org.junit.Test
-    public void testScaniaRemoveTrailer(){
-
-        Scania s = new Scania();
-    @org.junit.Test
     public void testTrailerIsDown(){
         Trailer trailer = new Trailer(10);
 
@@ -274,17 +270,24 @@ public class Test {
 
     @org.junit.Test
     public void testTrailerIsFullyRaised(){
+
+        Scania s = new Scania();
         Trailer trailer = new Trailer(10);
         trailer.raise(15);
 
-        s.addTrailer();
 
-        s.removeTrailer();
-        assertFalse("Trailer is succesfully removed from Scania.", s.getTrailerConnected());
-
-    }
         assertTrue("Trailer isn't fully raised when supposed to", trailer.isFullyRaised());
+
     }
+
+    @org.junit.Test
+    public void testScaniaRemoveTrailer(){
+
+        Scania s = new Scania();
+        s.addTrailer();
+        s.removeTrailer();
+
+        assertFalse("Trailer is succesfully removed from Scania.", s.getTrailerConnected());    }
 
     @org.junit.Test
     public void testTrailerGetAngle(){
