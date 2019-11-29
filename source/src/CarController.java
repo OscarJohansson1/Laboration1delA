@@ -34,13 +34,14 @@ public class CarController {
 
         Saab95 saab = new Saab95();
         saab.setPosY(260);
-
+        cc.cars.add(saab);
         Scania scania = new Scania();
         scania.setPosY(420);
 
         // Add cars to car controller
         cc.cars.add(volvo);
         cc.cars.add(saab);
+        scania.addTrailer();
         cc.cars.add(scania);
 
         // Start a new view and send a reference of self

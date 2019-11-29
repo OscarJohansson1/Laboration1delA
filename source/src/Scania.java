@@ -43,7 +43,7 @@ public class Scania extends Car {
      * @param amount amount of degrees to raise the trailer
      */
     public void raiseTrailer(int amount) {
-        if (getCurrentSpeed() == 0) {
+        if (getCurrentSpeed() <= 0) {
             trailer.raise(amount);
         }
     }
@@ -53,7 +53,7 @@ public class Scania extends Car {
      * @param amount amount of degrees to lower the trailer
      */
     public void lowerTrailer(int amount) {
-        if (getCurrentSpeed() == 0) {
+        if (getCurrentSpeed() <= 0) {
             trailer.lower(amount);
         }
     }
