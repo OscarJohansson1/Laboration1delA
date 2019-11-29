@@ -9,7 +9,6 @@ import java.util.Scanner;
 * It's responsibilities is to listen to the View and responds in a appropriate manner by
 * modifying the model state and the updating the view.
  */
-
 public class CarController {
     // member fields:
 
@@ -24,9 +23,8 @@ public class CarController {
     // A list of cars, modify if needed
     ArrayList<Car> cars = new ArrayList<>();
 
-    //methods:
-
     public static void main(String[] args) {
+
         // Instance of this class
         CarController cc = new CarController();
 
