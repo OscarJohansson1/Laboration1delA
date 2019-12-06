@@ -1,7 +1,5 @@
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.imageio.ImageIO;
@@ -11,14 +9,8 @@ import javax.swing.*;
 
 public class DrawPanel extends JPanel{
 
-    // Just a single image, TODO: Generalize
-    //private BufferedImage volvoImage;
-    //private BufferedImage saabImage;
-    //private BufferedImage scaniaImage;
-
     // Used in paintcomponent to draw images from cars.
     private HashMap<Car, BufferedImage> carImgHash = new HashMap<>();
-
 
     void mapCarImages(ArrayList<Car> cars) {
         String imgDir = "pics/";
@@ -33,8 +25,6 @@ public class DrawPanel extends JPanel{
             ex.printStackTrace();
         }
     }
-
-
 
     // Initializes the panel and reads the images
     public DrawPanel(int x, int y) {
