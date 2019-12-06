@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 /*
@@ -20,10 +21,16 @@ public class CarController {
 
     // The frame that represents this instance View of the MVC pattern
     CarView frame;
+
     // A list of cars, modify if needed
     ArrayList<Car> cars = new ArrayList<>();
+            '
+    // Hashmap with cars connected to images
+    HashMap<Car, String> carPicHash = new HashMap<>();
 
     public static void main(String[] args) {
+
+        String imgDir = "pics/";
 
         // Instance of this class
         CarController cc = new CarController();
@@ -44,9 +51,13 @@ public class CarController {
         cc.cars.add(saab);
         cc.cars.add(scania);
 
+
+        cc.carPicHash.put(volvo, imgDir+"Volvo240.jpg");
+        cc.carPicHash.put(saab, imgDir+"Saab95.jpg");
+        cc.carPicHash.put(scania, imgDir+"Scania.jpg");
+
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
-
         // Start the timer
         cc.timer.start();
     }
@@ -56,7 +67,7 @@ public class CarController {
     * */
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            for (Car car : cars) {
+            for (Car car : carPicHash.keySet()){
                 car.move();
                 int x = (int) Math.round(car.getPosX());
                 int y = (int) Math.round(car.getPosY());
@@ -64,7 +75,9 @@ public class CarController {
                     car.turnLeft();
                     car.turnLeft();
                 }
-                frame.drawPanel.moveit(x, y, car.getClass());
+                car.setPosX(x);
+                car.setPosY(y);
+                frame.drawPanel.moveit(x, y, car);
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
             }

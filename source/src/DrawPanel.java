@@ -14,21 +14,11 @@ public class DrawPanel extends JPanel{
     private BufferedImage saabImage;
     private BufferedImage scaniaImage;
     // To keep track of a singel cars position
-    Point volvoPoint = new Point();
-    Point saabPoint = new Point();
-    Point scaniaPoint = new Point();
 
     // TODO: Make this genereal for all cars
-    void moveit(int x, int y, Class carType){
-        if(carType.equals(Volvo240.class)){
-            volvoPoint.setLocation(x,y);
-        }
-        else if(carType.equals(Saab95.class)){
-            saabPoint.setLocation(x, y);
-        }
-        else if(carType.equals(Scania.class)){
-            scaniaPoint.setLocation(x, y);
-        }
+    void moveit(int x, int y, Car car){
+        car.setPosX(x);
+        car.setPosY(y);
     }
 
 

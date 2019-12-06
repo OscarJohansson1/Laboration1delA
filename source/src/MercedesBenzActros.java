@@ -10,10 +10,12 @@ public class MercedesBenzActros extends Car implements ITransporter<Car>{
      * Variable for if the Actros has a trailer connected.
      */
     private boolean hasCarTrailerConnected = true;
+
     /**
      * Car-trailer connected from the beginning.
      */
     private CarTrailer carTrailer = new CarTrailer(10);
+
     /**
      * List with cars on the car-transporter.
      */
