@@ -10,7 +10,7 @@ public class Ferry implements IMovable, IRaiseable, ITransporter<Car>{
     private Storage<Car> storage;
 
     /**
-     * Ramp for ferry (if and only if rampIsUp; cars can enter ferry
+     * Ramp for ferry (if and only  if rampIsUp; cars can enter ferry
      * Uses lower() and raise() to change status and isFullyRaised() to check status.
      */
     private Boolean rampIsUp;
