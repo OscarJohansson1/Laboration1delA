@@ -24,13 +24,9 @@ public class CarController {
 
     // A list of cars, modify if needed
     ArrayList<Car> cars = new ArrayList<>();
-            '
-    // Hashmap with cars connected to images
-    HashMap<Car, String> carPicHash = new HashMap<>();
 
     public static void main(String[] args) {
 
-        String imgDir = "pics/";
 
         // Instance of this class
         CarController cc = new CarController();
@@ -51,13 +47,12 @@ public class CarController {
         cc.cars.add(saab);
         cc.cars.add(scania);
 
-
-        cc.carPicHash.put(volvo, imgDir+"Volvo240.jpg");
-        cc.carPicHash.put(saab, imgDir+"Saab95.jpg");
-        cc.carPicHash.put(scania, imgDir+"Scania.jpg");
-
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
+
+        // Send the car list to drawPanel so it can map the cars
+        cc.frame.drawPanel.mapCarImages(cc.cars);
+
         // Start the timer
         cc.timer.start();
     }
@@ -67,17 +62,18 @@ public class CarController {
     * */
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            for (Car car : carPicHash.keySet()){
+            for (Car car : cars){
                 car.move();
-                int x = (int) Math.round(car.getPosX());
-                int y = (int) Math.round(car.getPosY());
+                double x = car.getPosX();
+                double y = car.getPosY();
                 if (x > frame.drawPanel.getWidth() - 100 || x < 0) {
                     car.turnLeft();
                     car.turnLeft();
                 }
-                car.setPosX(x);
+                // Set Positions for cars
                 car.setPosY(y);
-                frame.drawPanel.moveit(x, y, car);
+                car.setPosX(x);
+
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
             }
