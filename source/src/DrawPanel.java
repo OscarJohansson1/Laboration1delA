@@ -2,6 +2,8 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
@@ -13,14 +15,26 @@ public class DrawPanel extends JPanel{
     private BufferedImage volvoImage;
     private BufferedImage saabImage;
     private BufferedImage scaniaImage;
-    // To keep track of a singel cars position
+
+    private HashMap<Car, BufferedImage> map = new HashMap<>();
 
     // TODO: Make this genereal for all cars
-    void moveit(int x, int y, Car car){
+    void moveit(double x, double y, Car car){
         car.setPosX(x);
         car.setPosY(y);
     }
 
+    public void getCarsToHashMap(ArrayList<Car> cars) {
+        for (Car car : cars) {
+            if (car.getClass().equals(Volvo240.class)) {
+                map.put(car, volvoImage);
+            } else if (car.getClass().equals(Saab95.class)) {
+                map.put(car, saabImage);
+            } else if (car.getClass().equals(Scania.class)) {
+                map.put(car, scaniaImage);
+            }
+        }
+    }
 
     // Initializes the panel and reads the images
     public DrawPanel(int x, int y) {
@@ -50,8 +64,8 @@ public class DrawPanel extends JPanel{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(volvoImage, volvoPoint.x, volvoPoint.y, null); // see javadoc for more info on the parameters
-        g.drawImage(saabImage, saabPoint.x, saabPoint.y, null); // see javadoc for more info on the parameters
-        g.drawImage(scaniaImage, scaniaPoint.x, scaniaPoint.y, null); // see javadoc for more info on the parameters
+        for (Car car : map.keySet()) {
+            g.drawImage(map.get(car), (int) car.getPosX(), (int) car.getPosY(), null); // see javadoc for more info on the parameters
+        }
     }
 }
