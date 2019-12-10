@@ -6,7 +6,7 @@ import java.lang.Math;
  * created and the class is therefore abstract and serves as a template.
  */
 
-public abstract class Car implements IMovable, ITransportable{
+public abstract class Car implements IMovable, ITransportable, ICar {
 
     private boolean isBeingTransported = false;
     /**
@@ -89,19 +89,19 @@ public abstract class Car implements IMovable, ITransportable{
      * Get model name of car.
      * @return model name
      */
-    String getModelName(){ return modelName; }
+    public String getModelName(){ return modelName; }
 
     /**
      * Get x-position of car.
      * @return x-position
      */
-    double getPosX(){ return posX; }
+    public double getPosX(){ return posX; }
 
     /**
      * Get y-position of car.
      * @return y-position
      */
-    double getPosY(){ return posY; }
+    public double getPosY(){ return posY; }
 
     /**
      * Get angle car is currently facing.
@@ -115,13 +115,13 @@ public abstract class Car implements IMovable, ITransportable{
      * Set x-position of car.
      * @param x new x-position
      */
-    void setPosX(double x) { posX = x; }
+    public void setPosX(double x) { posX = x; }
 
     /**
      * Set y-position of car.
      * @param y new y-position
      */
-    void setPosY(double y) { posY = y; }
+    public void setPosY(double y) { posY = y; }
 
     /**
      * Set color of car.
@@ -142,12 +142,12 @@ public abstract class Car implements IMovable, ITransportable{
     /**
      * Starts car-engine and gives car slight speed forward.
      */
-    void startEngine(){ currentSpeed = 0.1; }
+    public void startEngine(){ currentSpeed = 0.1; }
 
     /**
      * Stops car-engine and sets speed to zero.
      */
-    void stopEngine(){ currentSpeed = 0; }
+    public void stopEngine(){ currentSpeed = 0; }
 
     // Abstract methods that should be implemented in every class extending Car
 
@@ -203,7 +203,7 @@ public abstract class Car implements IMovable, ITransportable{
      * Calls specific car-models method incrementSpeed().
      * @param amount a factor defining the intensity of increase in speed
      */
-    void gas(double amount){
+    public void gas(double amount){
         if (amount >= 0 && amount <= 1) {
             incrementSpeed(amount);
             if (getCurrentSpeed() > getEnginePower()) {
@@ -216,7 +216,7 @@ public abstract class Car implements IMovable, ITransportable{
      * Calls specific car-models method decrementSpeed().
      * @param amount a factor defining the intensity of decrease in speed
      */
-    void brake(double amount){
+    public void brake(double amount){
         if (amount >= 0 && amount <= 1) {
             decrementSpeed(amount);
             if (getCurrentSpeed() < 0) {
@@ -238,5 +238,22 @@ public abstract class Car implements IMovable, ITransportable{
     @Override
     public boolean isBeingTransported() {
         return isBeingTransported;
+    }
+
+
+    public void setTurboOn() {
+        //Override if car uses turbo
+    }
+
+    public void setTurboOff() {
+        //Override if car uses turbo
+    }
+
+    public void raiseTrailer(int amount) {
+        //Override if car uses trailer
+    }
+
+    public void lowerTrailer(int amount) {
+        //Override if car uses trailer
     }
 }

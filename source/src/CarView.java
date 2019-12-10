@@ -4,6 +4,7 @@ import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 /**
  * This class represents the full view of the MVC pattern of your car simulator.
@@ -13,12 +14,12 @@ import java.awt.event.ActionListener;
  * TODO: Write more actionListeners and wire the rest of the buttons
  **/
 
-public class CarView extends JFrame{
+public class CarView extends JFrame implements IObservable{
     private static final int X = 800;
     private static final int Y = 800;
 
     // The controller member
-    CarController carC;
+    ArrayList<IObserver> observers = new ArrayList<>();
 
     DrawPanel drawPanel = new DrawPanel(X, Y-240);
 
@@ -40,8 +41,7 @@ public class CarView extends JFrame{
     JButton stopButton = new JButton("Stop all cars");
 
     // Constructor
-    public CarView(String framename, CarController cc){
-        this.carC = cc;
+    public CarView(String framename){
         initComponents(framename);
     }
 
@@ -104,56 +104,72 @@ public class CarView extends JFrame{
         gasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.gas(gasAmount);
+                for (IObserver observer : observers) {
+                    observer.actOnUpdate(ButtonEvents.GAS, gasAmount);
+                }
             }
         });
 
         brakeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.brake(gasAmount);
+                for (IObserver observer : observers) {
+                    observer.actOnUpdate(ButtonEvents.BRAKE, gasAmount);
+                }
             }
         });
 
         turboOnButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.turboOn();
+                for (IObserver observer : observers) {
+                    observer.actOnUpdate(ButtonEvents.TURBOON);
+                }
             }
         });
 
         turboOffButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.turboOff();
+                for (IObserver observer : observers) {
+                    observer.actOnUpdate(ButtonEvents.TURBOOFF);
+                }
             }
         });
 
         liftBedButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.liftBed();
+                for (IObserver observer : observers) {
+                    observer.actOnUpdate(ButtonEvents.LIFTBED);
+                }
             }
         });
 
         lowerBedButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.lowerBed();
+                for (IObserver observer : observers) {
+                    observer.actOnUpdate(ButtonEvents.LOWERBED);
+                }
             }
         });
 
         startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.startCars();
+                for (IObserver observer : observers) {
+                    observer.actOnUpdate(ButtonEvents.STARTCARS);
+                }
             }
         });
 
         stopButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.stopCars();
+                for (IObserver observer : observers) {
+                    observer.actOnUpdate(ButtonEvents.STOPCARS);
+                }
             }
         });
 
@@ -168,5 +184,9 @@ public class CarView extends JFrame{
         this.setVisible(true);
         // Make sure the frame exits when "x" is pressed
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+    public void addObserver(IObserver observer) {
+        observers.add(observer);
     }
 }

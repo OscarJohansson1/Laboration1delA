@@ -12,6 +12,7 @@ public class Scania extends Car {
      */
     Scania() {
         super(2, 150, Color.blue, "Scania");
+        addTrailer();
     }
 
     /**
