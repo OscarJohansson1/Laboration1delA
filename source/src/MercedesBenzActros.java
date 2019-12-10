@@ -80,7 +80,7 @@ public class MercedesBenzActros extends Car implements ITransporter<Car>{
      * @param maxSize maximum amount of cars able to be stored in the trailer
      */
     public void addTrailer(int maxSize) {
-        carTrailer = new CarTrailer(maxSize);
+        carTrailer = new LoadableTrailer<Car>(maxSize);
         hasCarTrailerConnected = true;
     }
 

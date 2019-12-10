@@ -10,7 +10,7 @@ import java.util.Scanner;
 * It's responsibilities is to listen to the View and responds in a appropriate manner by
 * modifying the model state and the updating the view.
  */
-public class CarController {
+public class CarController implements IObserver {
     // member fields:
 
     // The delay (ms) corresponds to 20 updates a sec (hz)
@@ -23,31 +23,21 @@ public class CarController {
     CarView frame;
 
     // A list of cars, modify if needed
-    ArrayList<Car> cars = new ArrayList<>();
+    ArrayList<ICar> cars;
 
     public static void main(String[] args) {
 
         // Instance of this class
         CarController cc = new CarController();
+        CreatedCars carWorld = new CreatedCars();
 
-        // Crate cars
-        Volvo240 volvo = new Volvo240();
-        Saab95 saab = new Saab95();
-        Scania scania = new Scania();
+        cc.cars = carWorld.getICarList();
 
-        // Configure cars
-        volvo.setPosY(100);
-        saab.setPosY(260);
-        scania.setPosY(420);
-        scania.addTrailer();
-
-        // Add cars to car controller
-        cc.cars.add(volvo);
-        cc.cars.add(saab);
-        cc.cars.add(scania);
 
         // Start a new view and send a reference of self
-        cc.frame = new CarView("CarSim 1.0", cc);
+        cc.frame = new CarView("CarSim 1.0");
+
+        cc.frame.addObserver(cc);
 
         // Send the car list to drawPanel so it can map the cars
         cc.frame.drawPanel.mapCarImages(cc.cars);
@@ -61,7 +51,7 @@ public class CarController {
     * */
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            for (Car car : cars){
+            for (ICar car : cars){
                 car.move();
                 double x = car.getPosX();
                 double y = car.getPosY();
@@ -80,63 +70,38 @@ public class CarController {
         }
     }
 
-    // Calls the gas method for each car once
-    void gas(int amount) {
-        double gas = ((double) amount) / 100;
-        for (Car car : cars) {
-            car.gas(gas);
-        }
+    public void actOnUpdate(ButtonEvents event) {
+        actOnUpdate(event, 0);
     }
 
-    // Calls the break method for each car once
-    void brake(int amount) {
-        double brake = ((double) amount / 100);
-        for (Car car : cars) {
-            car.brake(brake);
-        }
-    }
-
-    void turboOn() {
-        for (Car car : cars) {
-            if (car instanceof Saab95) {
-                ((Saab95) car).setTurboOn();
+    public void actOnUpdate(ButtonEvents event, double amount) {
+        for (ICar car : cars) {
+            switch (event) {
+                case GAS:
+                    car.gas(amount / 100);
+                    break;
+                case BRAKE:
+                    car.brake(amount / 100);
+                    break;
+                case TURBOON:
+                    car.setTurboOn();
+                    break;
+                case TURBOOFF:
+                    car.setTurboOff();
+                    break;
+                case LIFTBED:
+                    car.raiseTrailer(1);
+                    break;
+                case LOWERBED:
+                    car.lowerTrailer(1);
+                    break;
+                case STOPCARS:
+                    car.stopEngine();
+                    break;
+                case STARTCARS:
+                    car.startEngine();
+                    break;
             }
-        }
-    }
-
-    void turboOff() {
-        for (Car car : cars) {
-            if (car instanceof Saab95) {
-                ((Saab95) car).setTurboOff();
-            }
-        }
-    }
-
-    void liftBed() {
-        for (Car car : cars) {
-            if (car instanceof Scania) {
-                ((Scania) car).raiseTrailer(1);
-            }
-        }
-    }
-
-    void lowerBed() {
-        for (Car car : cars) {
-            if (car instanceof Scania) {
-                ((Scania) car).lowerTrailer(1);
-            }
-        }
-    }
-
-    void startCars() {
-        for (Car car : cars) {
-            car.startEngine();
-        }
-    }
-
-    void stopCars(){
-        for (Car car : cars) {
-            car.stopEngine();
         }
     }
 }

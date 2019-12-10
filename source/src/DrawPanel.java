@@ -10,15 +10,15 @@ import javax.swing.*;
 public class DrawPanel extends JPanel{
 
     // Used in paintcomponent to draw images from cars.
-    private HashMap<Car, BufferedImage> carImgHash = new HashMap<>();
+    private HashMap<ICar, BufferedImage> carImgHash = new HashMap<>();
 
-    void mapCarImages(ArrayList<Car> cars) {
+    void mapCarImages(ArrayList<ICar> cars) {
         String imgDir = "pics/";
         String imgFormat = ".jpg";
         try {
-            for (Car car : cars){
+            for (ICar car : cars){
                 carImgHash.put(car, ImageIO.read(DrawPanel.class.getResourceAsStream
-                        (imgDir+car.getClass().getName()+imgFormat)));
+                        (imgDir+car.getModelName()+imgFormat)));
             }
         } catch (Exception ex)
         {
@@ -39,8 +39,10 @@ public class DrawPanel extends JPanel{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        for(HashMap.Entry<Car, BufferedImage> entry: carImgHash.entrySet()){
-            g.drawImage(entry.getValue(), (int) entry.getKey().getPosX(), (int) entry.getKey().getPosY(), null);
+        int y = 0;
+        for(HashMap.Entry<ICar, BufferedImage> entry: carImgHash.entrySet()){
+            g.drawImage(entry.getValue(), (int) entry.getKey().getPosX(), y, null);
+            y += 100;
         }
     }
 }
