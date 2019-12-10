@@ -27,7 +27,6 @@ public class CarController {
 
     public static void main(String[] args) {
 
-
         // Instance of this class
         CarController cc = new CarController();
 
@@ -70,6 +69,7 @@ public class CarController {
                     car.turnLeft();
                     car.turnLeft();
                 }
+
                 // Set Positions for cars
                 car.setPosY(y);
                 car.setPosX(x);

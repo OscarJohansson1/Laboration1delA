@@ -19,7 +19,7 @@ public class DrawPanel extends JPanel{
             for (Car car : cars){
                 carImgHash.put(car, ImageIO.read(DrawPanel.class.getResourceAsStream
                         (imgDir+car.getClass().getName()+imgFormat)));
-            };
+            }
         } catch (Exception ex)
         {
             ex.printStackTrace();

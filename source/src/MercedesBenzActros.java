@@ -14,7 +14,7 @@ public class MercedesBenzActros extends Car implements ITransporter<Car>{
     /**
      * Car-trailer connected from the beginning.
      */
-    private CarTrailer carTrailer = new CarTrailer(10);
+    private LoadableTrailer<Car> carTrailer = new LoadableTrailer<>(10);
 
     /**
      * List with cars on the car-transporter.

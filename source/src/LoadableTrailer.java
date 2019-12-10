@@ -1,7 +1,7 @@
 /**
  * The CarTrailer class describes a trailer which store cars.
  */
-public class CarTrailer implements IRaiseable, ITransporter<Car> {
+public class LoadableTrailer<T> implements IRaiseable, ITransporter<T> {
     /**
      * Variable for if trailer is down or not'
      */
@@ -9,13 +9,13 @@ public class CarTrailer implements IRaiseable, ITransporter<Car> {
     /**
      * Variable for the storage where the car trailer stores it's cars.
      */
-    private Storage<Car> storage;
+    private Storage<T> storage;
 
     /**
      * Constructor for car trailer.
      * @param maxStorage maximum amount of objects that can be stored
      */
-    public CarTrailer(int maxStorage) {
+    public LoadableTrailer(int maxStorage) {
         this.storage = new Storage<>(maxStorage);
     }
 
@@ -66,8 +66,8 @@ public class CarTrailer implements IRaiseable, ITransporter<Car> {
      * @param car defines what car to store in storage
      */
     @Override
-    public void load(Car car) {
-        storage.load(car);
+    public void load(T object) {
+        storage.load(object);
     }
 
     /**
@@ -75,7 +75,7 @@ public class CarTrailer implements IRaiseable, ITransporter<Car> {
      * @return latest stored car
      */
     @Override
-    public Car unload() {
+    public T unload() {
         return storage.removeLastStored();
     }
 }
