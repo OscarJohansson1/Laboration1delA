@@ -203,11 +203,11 @@ public class Test {
      */
     @org.junit.Test
     public void testFerryLoadUnload(){
-        Ferry ferry = new Ferry(2);
+        Stenaline ferry = new Stenaline();
         Saab95 coolCar = new Saab95();
         Saab95 unCoolCar = new Saab95();
-        ferry.load(coolCar);
-        ferry.load(unCoolCar);
+        ferry.loadCar(coolCar);
+        ferry.loadCar(unCoolCar);
         assertEquals("Wrong Car", coolCar, ferry.unload());
         assertEquals("Wrong Car", unCoolCar, ferry.unload());
     }
