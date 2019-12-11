@@ -25,7 +25,7 @@ public class BeerBarrel {
     public void setBrand(String brand) {
         this.brand = brand;
     }
-    
+
 
     private int sizeInLitres;
     private String brand;

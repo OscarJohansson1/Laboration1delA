@@ -208,8 +208,8 @@ public class Test {
         Saab95 unCoolCar = new Saab95();
         ferry.loadCar(coolCar);
         ferry.loadCar(unCoolCar);
-        assertEquals("Wrong Car", coolCar, ferry.unload());
-        assertEquals("Wrong Car", unCoolCar, ferry.unload());
+        assertEquals("Wrong Car", coolCar, ferry.unloadCar());
+        assertEquals("Wrong Car", unCoolCar, ferry.unloadCar());
     }
 
     /**
