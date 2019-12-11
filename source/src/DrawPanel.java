@@ -2,6 +2,8 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
@@ -10,7 +12,7 @@ import javax.swing.*;
 public class DrawPanel extends JPanel{
 
     // Used in paintcomponent to draw images from cars.
-    private HashMap<ICar, BufferedImage> carImgHash = new HashMap<>();
+    private HashMap<ICar, BufferedImage> carImgHash = new LinkedHashMap<>();
     private SpeedMeter speedMeter;
 
     void mapCarImages(ArrayList<ICar> cars) {
