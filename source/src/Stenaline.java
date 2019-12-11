@@ -15,7 +15,7 @@ public class Stenaline extends Ferry {
         return (BeerBarrel) deck.getLastStorage().removeLastStored();
     }
 
-    Car unload(){
+    Car unloadCar(){
         return (Car) deck.getFirstStorage().removeFirstStored();
     }
 
