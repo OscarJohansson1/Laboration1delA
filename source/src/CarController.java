@@ -23,11 +23,32 @@ public class CarController implements IObserver {
     // A list of cars, modify if needed
     ArrayList<ICar> cars;
 
+<<<<<<< Updated upstream
     CarController() {
         // The timer is started with an listener (see below) that executes the statements
         // each step between delays.
         Timer timer = new Timer(delay, new TimerListener());
         timer.start();
+=======
+    public static void main(String[] args) {
+
+        // Instance of this class
+        CarController cc = new CarController();
+        CreatedCars carWorld = new CreatedCars();
+
+        cc.cars = carWorld.getICarList();
+
+        // Start a new view and send a reference of self
+        cc.frame = new CarView("CarSim 1.0");
+
+        cc.frame.addObserver(cc);
+
+        // Send the car list to drawPanel so it can map the cars
+        cc.frame.drawPanel.mapCarImages(cc.cars);
+
+        // Start the timer
+        cc.timer.start();
+>>>>>>> Stashed changes
     }
 
 

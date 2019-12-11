@@ -6,26 +6,21 @@ public class BeerBarrel {
         return litresOfBeerStored;
     }
 
-    public void setLitresOfBeerStored(double litresOfBeerStored) {
-        this.litresOfBeerStored = litresOfBeerStored;
-    }
-
     public int getSizeInLitres() {
         return sizeInLitres;
-    }
-
-    public void setSizeInLitres(int sizeInLitres) {
-        this.sizeInLitres = sizeInLitres;
     }
 
     public String getBrand() {
         return brand;
     }
 
-    public void setBrand(String brand) {
-        this.brand = brand;
+    public void fill(){
+
     }
 
+    public void tap(){
+
+    }
 
     private int sizeInLitres;
     private String brand;

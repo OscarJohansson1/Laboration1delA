@@ -3,7 +3,10 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+<<<<<<< Updated upstream
 import java.util.Map;
+=======
+>>>>>>> Stashed changes
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
