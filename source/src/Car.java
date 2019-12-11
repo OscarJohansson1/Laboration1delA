@@ -77,7 +77,7 @@ public abstract class Car implements IMovable, ITransportable, ICar {
      * Get current speed of car.
      * @return current speed
      */
-    double getCurrentSpeed(){ return currentSpeed; }
+    public double getCurrentSpeed(){ return currentSpeed; }
 
     /**
      * Get color of car.

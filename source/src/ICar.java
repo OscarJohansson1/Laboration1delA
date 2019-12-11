@@ -32,4 +32,6 @@ public interface ICar {
 
     void turnRight();
 
+    double getCurrentSpeed();
+
 }

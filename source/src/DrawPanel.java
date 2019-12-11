@@ -11,6 +11,7 @@ public class DrawPanel extends JPanel{
 
     // Used in paintcomponent to draw images from cars.
     private HashMap<ICar, BufferedImage> carImgHash = new HashMap<>();
+    private SpeedMeter speedMeter;
 
     void mapCarImages(ArrayList<ICar> cars) {
         String imgDir = "pics/";
@@ -31,6 +32,8 @@ public class DrawPanel extends JPanel{
         this.setDoubleBuffered(true);
         this.setPreferredSize(new Dimension(x, y));
         this.setBackground(Color.green);
+
+        this.speedMeter = new SpeedMeter(5, y);
         // Print an error message in case file is not found with a try/catch block
     }
 
@@ -44,5 +47,6 @@ public class DrawPanel extends JPanel{
             g.drawImage(entry.getValue(), (int) entry.getKey().getPosX(), y, null);
             y += 100;
         }
+        speedMeter.paintText(g);
     }
 }
