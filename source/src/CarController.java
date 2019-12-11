@@ -31,7 +31,7 @@ public class CarController implements IObserver {
         CarController cc = new CarController();
         CreatedCars carWorld = new CreatedCars();
 
-        cc.cars = carWorld.getICarList();
+        cc.cars = CreatedCars.getICarList();
 
 
         // Start a new view and send a reference of self

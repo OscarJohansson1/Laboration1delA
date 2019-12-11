@@ -142,7 +142,9 @@ public abstract class Car implements IMovable, ITransportable, ICar {
     /**
      * Starts car-engine and gives car slight speed forward.
      */
-    public void startEngine(){ currentSpeed = 0.1; }
+    public void startEngine(){
+        currentSpeed = 0.1;
+    }
 
     /**
      * Stops car-engine and sets speed to zero.

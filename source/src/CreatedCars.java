@@ -1,9 +1,8 @@
 import java.util.ArrayList;
-import java.util.List;
 
-public class CreatedCars {
+class CreatedCars {
 
-    static ArrayList<ICar> cars = new ArrayList<>();
+    private static ArrayList<ICar> cars = new ArrayList<>();
 
     CreatedCars() {
         cars.add(CarFactory.createVolvo240());
@@ -11,7 +10,7 @@ public class CreatedCars {
         cars.add(CarFactory.createScania());
     }
 
-    public static ArrayList<ICar> getICarList() {
+    static ArrayList<ICar> getICarList() {
         return cars;
     }
 }
