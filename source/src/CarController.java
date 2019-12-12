@@ -13,46 +13,11 @@ import java.util.Scanner;
 public class CarController implements IObserver {
     // member fields:
 
-    // The delay (ms) corresponds to 20 updates a sec (hz)
-    private final int delay = 50;
-
-    // The frame that represents this instance View of the MVC pattern
-    //TODO ta bort.
-    CarView frame = new CarView("CarSim 1.0");;
-
     // A list of cars, modify if needed
-    ArrayList<ICar> cars;
+    private ArrayList<ICar> cars;
 
-    CarController() {
-        // The timer is started with an listener (see below) that executes the statements
-        // each step between delays.
-        Timer timer = new Timer(delay, new TimerListener());
-        timer.start();
-    }
-
-
-    /* Each step the TimerListener moves all the cars in the list and tells the
-    * view to update its images. Change this method to your needs.
-    * */
-    private class TimerListener implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            for (ICar car : cars){
-                car.move();
-                double x = car.getPosX();
-                double y = car.getPosY();
-                if (x > frame.drawPanel.getWidth() - 100 || x < 0) {
-                    car.turnLeft();
-                    car.turnLeft();
-                }
-
-                // Set Positions for cars
-                car.setPosY(y);
-                car.setPosX(x);
-
-                // repaint() calls the paintComponent method of the panel
-                frame.drawPanel.repaint();
-            }
-        }
+    CarController(ArrayList<ICar> cars) {
+        this.cars = cars;
     }
 
     public void actOnUpdate(ButtonEvents event) {

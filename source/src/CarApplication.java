@@ -1,19 +1,24 @@
+import java.util.ArrayList;
+
 public class CarApplication {
 
     public static void main(String[] args) {
 
-        // Instance of this class
-        CarController cc = new CarController();
         CreatedCars carWorld = new CreatedCars();
+        ArrayList<ICar> cars = carWorld.getICarList();
 
-        cc.cars = CreatedCars.getICarList();
-
+        // Instance of this class
+        CarController cc = new CarController(cars);
+        CarModel cm = new CarModel(cars);
+        // The frame that represents this instance View of the MVC pattern
+        CarView frame = new CarView("CarSim 1.0");
 
         // Start a new view and send a reference of self
-        cc.frame.addObserver(cc);
+        frame.addObserver(cc);
+        cm.addObserver(frame);
 
         // Send the car list to drawPanel so it can map the cars
-        cc.frame.drawPanel.mapCarImages(cc.cars);
+        frame.addListWithCarsToDrawPanel(cars);
     }
 
 }
