@@ -3,10 +3,6 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
-<<<<<<< Updated upstream
-import java.util.Map;
-=======
->>>>>>> Stashed changes
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
@@ -38,7 +34,7 @@ public class DrawPanel extends JPanel{
         this.setPreferredSize(new Dimension(x, y));
         this.setBackground(Color.green);
 
-        this.speedMeter = new SpeedMeter(5, y);
+        this.speedMeter = new SpeedMeter(5, y, carImgHash);
         // Print an error message in case file is not found with a try/catch block
     }
 

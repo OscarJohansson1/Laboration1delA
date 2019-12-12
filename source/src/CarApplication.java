@@ -9,9 +9,10 @@ public class CarApplication {
 
         // Instance of this class
         CarController cc = new CarController(cars);
-        CarModel cm = new CarModel(cars);
+
         // The frame that represents this instance View of the MVC pattern
         CarView frame = new CarView("CarSim 1.0");
+        CarModel cm = new CarModel(cars, frame.getX());
 
         // Start a new view and send a reference of self
         frame.addObserver(cc);

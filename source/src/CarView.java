@@ -188,6 +188,10 @@ public class CarView extends JFrame implements IObservable, IObserver{
         drawPanel.mapCarImages(cars);
     }
 
+    public int getX() {
+        return X;
+    }
+
     public void addObserver(IObserver observer) {
         observers.add(observer);
     }
