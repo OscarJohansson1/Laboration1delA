@@ -310,7 +310,17 @@ public class Test {
     public void testTrailerGetAngle(){
         Trailer trailer = new Trailer(10);
         trailer.raise(5);
-
         assertEquals("Wrong angle after raise is called",5, trailer.getAngle());
+    }
+
+    @org.junit.Test
+    public void beerTesting(){
+        Stenaline stenaline = new Stenaline();
+
+        String prippsBrand = "Pripps 7.2% Extra Stark";
+        BeerBarrel starkPrippsTunna = new BeerBarrel(100, true, prippsBrand);
+
+        stenaline.loadBeerBarrel(starkPrippsTunna);
+        assertEquals(stenaline.unloadBeerBarrel().getBrand(), prippsBrand);
     }
 }
