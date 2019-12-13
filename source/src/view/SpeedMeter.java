@@ -25,7 +25,7 @@ public class SpeedMeter extends JPanel {
         for (Pair<ICar, BufferedImage> pair : cars) {
             ICar car = pair.getFirst();
             g.setColor(Color.BLACK);
-            g.drawString(car.getModelName().substring(6) + " : " + car.getCurrentSpeed(), x, dy);
+            g.drawString(car.getModelName() + " : " + car.getCurrentSpeed(), x, dy);
             dy += 20;
         }
     }

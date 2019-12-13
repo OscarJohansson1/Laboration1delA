@@ -46,7 +46,7 @@ public class CarView extends JFrame implements IObservable, IObserver {
     private JButton brakeButton = new JButton("Brake");
     private JButton turboOnButton = new JButton("Saab Turbo on");
     private JButton turboOffButton = new JButton("Saab Turbo off");
-    private JButton liftBedButton = new JButton("model.Scania Lift Bed");
+    private JButton liftBedButton = new JButton("Scania Lift Bed");
     private JButton lowerBedButton = new JButton("Lower Lift Bed");
 
     private JButton startButton = new JButton("Start all cars");
@@ -56,7 +56,7 @@ public class CarView extends JFrame implements IObservable, IObserver {
     private JButton removeCarButton = new JButton("Remove car");
 
     private JPanel carDropDown = new JPanel();
-    private String[] carArray = {"Any", "model.Saab95", "model.Volvo240", "model.Scania"};
+    private String[] carArray = {"Any", "Saab95", "Volvo240", "Scania"};
     private JComboBox<String> carList = new JComboBox<>(carArray);
     private int carListIndex = -1;
     private JLabel carLabel = new JLabel("Choose car to add");

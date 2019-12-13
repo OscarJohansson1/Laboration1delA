@@ -15,7 +15,6 @@ public class DrawPanel extends JPanel{
 
     // Used in paintcomponent to draw images from cars.
     private ArrayList<Pair<ICar, BufferedImage>> carImgList = new ArrayList<>();
-
     private SpeedMeter speedMeter;
     private int prevSize = 0;
 
@@ -27,7 +26,7 @@ public class DrawPanel extends JPanel{
                 for (int i = prevSize; i < cars.size(); i++) {
                     ICar car = cars.get(i);
                     carImgList.add(new Pair<>(car, ImageIO.read(DrawPanel.class.getResourceAsStream
-                            (imgDir + car.getModelName().substring(6) + imgFormat)))); // Substring out package name.
+                            (imgDir + car.getModelName() + imgFormat)))); // Substring out package name.
                 }
             } catch (Exception ex) {
                 ex.printStackTrace();

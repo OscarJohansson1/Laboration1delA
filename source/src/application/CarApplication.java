@@ -26,8 +26,6 @@ public class CarApplication {
         // Start a new view and send a reference of self
         frame.addObserver(cc);
         cm.addObserver(frame);
-
-
     }
 
 }

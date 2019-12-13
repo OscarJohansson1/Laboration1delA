@@ -91,7 +91,7 @@ public abstract class Car implements IMovable, ITransportable, ICar {
      * Get model name of car.
      * @return model name
      */
-    public String getModelName(){ return modelName; }
+    public String getModelName(){ return getClass().getSimpleName(); }
 
     /**
      * Get x-position of car.
