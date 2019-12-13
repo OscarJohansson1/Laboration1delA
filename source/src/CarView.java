@@ -4,6 +4,8 @@ import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.ArrayList;
 
 /**
@@ -18,12 +20,15 @@ public class CarView extends JFrame implements IObservable, IObserver{
     private static final int X = 800;
     private static final int Y = 800;
 
+    ArrayList<ICar> cars;
+
     // The controller member
     ArrayList<IObserver> observers = new ArrayList<>();
 
     DrawPanel drawPanel = new DrawPanel(X, Y-240);
 
     JPanel controlPanel = new JPanel();
+    JPanel controlPanel2 = new JPanel();
 
     JPanel gasPanel = new JPanel();
     JSpinner gasSpinner = new JSpinner();
@@ -39,6 +44,15 @@ public class CarView extends JFrame implements IObservable, IObserver{
 
     JButton startButton = new JButton("Start all cars");
     JButton stopButton = new JButton("Stop all cars");
+
+    JButton addCarButton = new JButton("Add car");
+    JButton removeCarButton = new JButton("Remove car");
+
+    JPanel carDropDown = new JPanel();
+    String[] carArray = {"Any", "Saab95", "Volvo240", "Scania"};
+    JComboBox<String> carList = new JComboBox<>(carArray);
+    int carListIndex = -1;
+    JLabel carLabel = new JLabel("Choose car to add");
 
     // Constructor
     public CarView(String framename){
@@ -96,6 +110,34 @@ public class CarView extends JFrame implements IObservable, IObserver{
         stopButton.setForeground(Color.black);
         stopButton.setPreferredSize(new Dimension(X/5-15,200));
         this.add(stopButton);
+
+        controlPanel2.setLayout(new GridLayout(2,1));
+
+        addCarButton.setBackground(Color.magenta);
+        addCarButton.setForeground(Color.black);
+        controlPanel2.add(addCarButton);
+
+        removeCarButton.setBackground(Color.pink);
+        removeCarButton.setForeground(Color.black);
+        controlPanel2.add(removeCarButton);
+
+        controlPanel2.setPreferredSize(new Dimension(X/4-15, 200));
+        this.add(controlPanel2);
+
+
+        carList.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if(e.getStateChange() == ItemEvent.SELECTED) {
+                    carListIndex = carList.getSelectedIndex();
+                }
+            }
+        });
+        carDropDown.setLayout(new BorderLayout());
+        carDropDown.add(carLabel, BorderLayout.PAGE_START);
+        carDropDown.add(carList, BorderLayout.PAGE_END);
+        this.add(carDropDown);
+
 
         // This actionListener is for the gas button only
         // TODO: Create more for each component as necessary
@@ -171,6 +213,38 @@ public class CarView extends JFrame implements IObservable, IObserver{
             }
         });
 
+        addCarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ButtonEvents event;
+                switch (carListIndex) {
+                    case 1:
+                        event = ButtonEvents.ADDSAAB;
+                        break;
+                    case 2:
+                        event = ButtonEvents.ADDVOLVO;
+                        break;
+                    case 3:
+                        event = ButtonEvents.ADDSCANIA;
+                        break;
+                    default:
+                        event = ButtonEvents.ADDCAR;
+                }
+                for (IObserver observer : observers) {
+                    observer.actOnUpdate(event);
+                }
+            }
+        });
+
+        removeCarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                for (IObserver observer : observers) {
+                    observer.actOnUpdate(ButtonEvents.REMOVECAR);
+                }
+            }
+        });
+
         // Make the frame pack all it's components by respecting the sizes if possible.
         this.pack();
 
@@ -184,7 +258,11 @@ public class CarView extends JFrame implements IObservable, IObserver{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    public void addListWithCarsToDrawPanel(ArrayList<ICar> cars) {
+    public void setCarsList(ArrayList<ICar> cars) {
+        this.cars = cars;
+    }
+
+    void addListWithCarsToDrawPanel() {
         drawPanel.mapCarImages(cars);
     }
 
@@ -198,6 +276,7 @@ public class CarView extends JFrame implements IObservable, IObserver{
 
     @Override
     public void actOnUpdate(ButtonEvents event) {
+        addListWithCarsToDrawPanel();
         repaint();
     }
 

@@ -2,20 +2,20 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Random;
 
 
 public class CarModel implements IObservable {
 
     private int worldXSize;
-
-    private ArrayList<ICar> cars;
-
+    private ArrayList<ICar> cars = new ArrayList<>();
     private ArrayList<IObserver> observers = new ArrayList<>();
+    private Random rand = new Random();
 
+    CarModel(int x) {
 
+        addCarsToList();
 
-    CarModel(ArrayList<ICar> cars, int x) {
-        this.cars = cars;
         worldXSize = x;
         // The timer is started with an listener (see below) that executes the statements
         // each step between delays.
@@ -25,10 +25,56 @@ public class CarModel implements IObservable {
         timer.start();
     }
 
+    private void addCarsToList() {
+        cars.add(CarFactory.createVolvo240());
+        cars.add(CarFactory.createSaab95());
+        cars.add(CarFactory.createScania());
+    }
 
     @Override
     public void addObserver(IObserver observer) {
         observers.add(observer);
+    }
+
+    ArrayList<ICar> getICarList() {
+        return cars;
+    }
+
+    void removeCarFromList() {
+        if (cars.size() > 0) {
+            cars.remove(cars.size() - 1);
+        }
+    }
+
+    void addSaab95() {
+        if (cars.size() < 10) {
+            cars.add(CarFactory.createSaab95());
+        }
+    }
+    void addVolvo240() {
+        if (cars.size() < 10) {
+            cars.add(CarFactory.createVolvo240());
+        }
+    }
+    void addScania() {
+        if (cars.size() < 10) {
+            cars.add(CarFactory.createScania());
+        }
+    }
+
+    void addRandomCarToList() {
+        if (cars.size() < 10)
+            switch (rand.nextInt(3)) {
+                case 0:
+                    cars.add(CarFactory.createSaab95());
+                    break;
+                case 1:
+                    cars.add(CarFactory.createVolvo240());
+                    break;
+                case 2:
+                    cars.add(CarFactory.createScania());
+                    break;
+            }
     }
 
     /* Each step the TimerListener moves all the cars in the list and tells the
@@ -51,10 +97,10 @@ public class CarModel implements IObservable {
                 car.setPosY(y);
                 car.setPosX(x);
 
-                // Lets observers know that the state has been changed and they should update accordingly.
-                for (IObserver observer : observers) {
-                    observer.actOnUpdate(ButtonEvents.UPDATE);
-                }
+            }
+            // Lets observers know that the state has been changed and they should update accordingly.
+            for (IObserver observer : observers) {
+                observer.actOnUpdate(ButtonEvents.UPDATE);
             }
         }
     }

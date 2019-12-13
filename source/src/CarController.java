@@ -1,9 +1,6 @@
-import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Scanner;
+
 
 /*
 * This class represents the Controller part in the MVC pattern.
@@ -15,9 +12,11 @@ public class CarController implements IObserver {
 
     // A list of cars, modify if needed
     private ArrayList<ICar> cars;
+    private CarModel carModel;
 
-    CarController(ArrayList<ICar> cars) {
+    CarController(ArrayList<ICar> cars, CarModel carModel) {
         this.cars = cars;
+        this.carModel = carModel;
     }
 
     public void actOnUpdate(ButtonEvents event) {
@@ -25,6 +24,25 @@ public class CarController implements IObserver {
     }
 
     public void actOnUpdate(ButtonEvents event, double amount) {
+        switch (event) {
+            case ADDCAR:
+                carModel.addRandomCarToList();
+                break;
+            case ADDSAAB:
+                carModel.addSaab95();
+                break;
+            case ADDVOLVO:
+                carModel.addVolvo240();
+                break;
+            case ADDSCANIA:
+                carModel.addScania();
+                break;
+            case REMOVECAR:
+                carModel.removeCarFromList();
+                break;
+            default:
+                break;
+        }
         for (ICar car : cars) {
             switch (event) {
                 case GAS:
@@ -51,6 +69,7 @@ public class CarController implements IObserver {
                 case STARTCARS:
                     car.startEngine();
                     break;
+
             }
         }
     }
