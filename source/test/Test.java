@@ -1,18 +1,23 @@
+
+import model.*;
 import org.junit.Before;
+import org.junit.Ignore;
+
 import java.awt.*;
 import static org.junit.Assert.*;
 
 /**
  * The Test class stores all test-methods.
  */
+@Ignore
 public class Test {
 
     /**
-     * Car of model Saab95 used in tests.
+     * model.Car of model model.Saab95 used in tests.
      */
     private Saab95 saab95;
     /**
-     * Car of model Volvo240 used in tests.
+     * model.Car of model model.Volvo240 used in tests.
      */
     private Volvo240 volvo240;
 
@@ -26,7 +31,7 @@ public class Test {
     }
 
     /**
-     * Tests method speedFactor() in Saab95 when variable turboOn is false.
+     * Tests method speedFactor() in model.Saab95 when variable turboOn is false.
      */
     @org.junit.Test
     public void testSpeedFactorIfTurboOffSaab95() {
@@ -36,7 +41,7 @@ public class Test {
     }
 
     /**
-     * Tests method speedFactor() in Saab95 when variable turboOn is true.
+     * Tests method speedFactor() in model.Saab95 when variable turboOn is true.
      */
     @org.junit.Test
     public void testSpeedFactorIfTurboOnSaab95() {
@@ -46,7 +51,7 @@ public class Test {
     }
 
     /**
-     * Tests method incrementSpeed() in Saab95. Starting-speed is 0.
+     * Tests method incrementSpeed() in model.Saab95. Starting-speed is 0.
      */
     @org.junit.Test
     public void testIncrementSpeedSaab95() {
@@ -58,7 +63,7 @@ public class Test {
     }
 
     /**
-     * Tests method incrementSpeed() in Volvo240. Starting-speed is 0.
+     * Tests method incrementSpeed() in model.Volvo240. Starting-speed is 0.
      */
     @org.junit.Test
     public void testIncrementSpeedVolvo240() {
@@ -70,7 +75,7 @@ public class Test {
     }
 
     /**
-     * Tests method decrementSpeed() in Saab95. Starting-speed is 0.1.
+     * Tests method decrementSpeed() in model.Saab95. Starting-speed is 0.1.
      */
     @org.junit.Test
     public void testDecrementSpeedSaab95() {
@@ -83,7 +88,7 @@ public class Test {
     }
 
     /**
-     * Tests method decrementSpeed() in Volvo240. Starting-speed is 0.1.
+     * Tests method decrementSpeed() in model.Volvo240. Starting-speed is 0.1.
      */
     @org.junit.Test
     public void testDecrementSpeedVolvo240() {
@@ -96,7 +101,7 @@ public class Test {
     }
 
     /**
-     * Tests method move() in Car. Starting-angel is 0.
+     * Tests method move() in model.Car. Starting-angel is 0.
      */
     @org.junit.Test
     public void testMove() {
@@ -108,7 +113,7 @@ public class Test {
     }
 
     /**
-     * Tests method turnLeft() in Car. Starting-angel is 0.
+     * Tests method turnLeft() in model.Car. Starting-angel is 0.
      */
     @org.junit.Test
     public void testTurnLeft() {
@@ -118,7 +123,7 @@ public class Test {
     }
 
     /**
-     * Tests method turnRight() in Car. Starting-angel is 0.
+     * Tests method turnRight() in model.Car. Starting-angel is 0.
      */
     @org.junit.Test
     public void testTurnRight() {
@@ -128,7 +133,7 @@ public class Test {
     }
 
     /**
-     * Tests method startEngine() in Car. Starting-speed is 0.
+     * Tests method startEngine() in model.Car. Starting-speed is 0.
      */
     @org.junit.Test
     public void testStartEngine() {
@@ -138,7 +143,7 @@ public class Test {
     }
 
     /**
-     * Tests method stopEngine() in Car. Starting-speed is 0.1.
+     * Tests method stopEngine() in model.Car. Starting-speed is 0.1.
      */
     @org.junit.Test
     public void testStopEngine() {
@@ -149,7 +154,7 @@ public class Test {
     }
 
     /**
-     * Tests method getNrDoors() in Car.
+     * Tests method getNrDoors() in model.Car.
      */
     @org.junit.Test
     public void testGetNrDoors() {
@@ -157,7 +162,7 @@ public class Test {
     }
 
     /**
-     * Tests method getColor() and setColor() in Car.
+     * Tests method getColor() and setColor() in model.Car.
      */
     @org.junit.Test
     public void testColor() {
@@ -167,15 +172,15 @@ public class Test {
     }
 
     /**
-     * Tests method getModelNumber() in Car.
+     * Tests method getModelNumber() in model.Car.
      */
     @org.junit.Test
     public void testGetModelNumber() {
-        assertEquals("Doesn't return correct amount of doors", "Saab95", saab95.getModelName());
+        assertEquals("Doesn't return correct amount of doors", "model.Saab95", saab95.getModelName());
     }
 
     /**
-     * Tests method gas() in Car. Specifically tests edge-case when current speed
+     * Tests method gas() in model.Car. Specifically tests edge-case when current speed
      * exceeds the engines power of the car
      */
     @org.junit.Test
@@ -187,7 +192,7 @@ public class Test {
     }
 
     /**
-     * Tests method brake() in Car. Specifically tests edge-case when current speed
+     * Tests method brake() in model.Car. Specifically tests edge-case when current speed
      * deceeds 0.
      */
     @org.junit.Test
@@ -208,8 +213,8 @@ public class Test {
         Saab95 unCoolCar = new Saab95();
         ferry.loadCar(coolCar);
         ferry.loadCar(unCoolCar);
-        assertEquals("Wrong Car", coolCar, ferry.unloadCar());
-        assertEquals("Wrong Car", unCoolCar, ferry.unloadCar());
+        assertEquals("Wrong model.Car", coolCar, ferry.unloadCar());
+        assertEquals("Wrong model.Car", unCoolCar, ferry.unloadCar());
     }
 
     /**
@@ -219,7 +224,7 @@ public class Test {
     public void testGarage(){
         Garage<Volvo240> garage = new Garage<>(10);
         garage.load(volvo240);
-        assertEquals("Car not properly unload ",volvo240, garage.unload());
+        assertEquals("model.Car not properly unload ",volvo240, garage.unload());
     }
 
     /**
@@ -234,7 +239,7 @@ public class Test {
         assertEquals("Wrong car unloaded", carTransport.unload(), saab95);
         carTransport.load(saab95);
         carTransport.setCurrentSpeed(1337);
-        assertNull("Car cannot be unloaded when transporter is moving!", carTransport.unload());
+        assertNull("model.Car cannot be unloaded when transporter is moving!", carTransport.unload());
     }
 
     /**
@@ -246,7 +251,7 @@ public class Test {
         Scania s = new Scania();
 
         s.removeTrailer();
-        assertFalse("No trailer to remove from Scania.", s.getTrailerConnected());
+        assertFalse("No trailer to remove from model.Scania.", s.getTrailerConnected());
     }
 
     /**
@@ -258,7 +263,7 @@ public class Test {
         storage.load(saab95);
         storage.load(volvo240);
         storage.load(volvo240);
-        assertFalse("Car was loaded when storage was full!!", storage.load(saab95));
+        assertFalse("model.Car was loaded when storage was full!!", storage.load(saab95));
         assertEquals("Wrong car unloaded", storage.removeAtIndex(1), volvo240);
         assertEquals("Wrong car unloaded", storage.removeFirstStored(), saab95);
         storage.load(saab95);
@@ -277,7 +282,7 @@ public class Test {
         trailer.lower(2);
 
         assertEquals("Angel is suppose to be 0, but is" + trailer.getAngle(), 0, trailer.getAngle());
-        assertTrue("Trailer isn't down, when supposed to be down", trailer.isDown());
+        assertTrue("model.Trailer isn't down, when supposed to be down", trailer.isDown());
     }
 
     /**
@@ -290,7 +295,7 @@ public class Test {
         trailer.raise(15);
 
 
-        assertTrue("Trailer isn't fully raised when supposed to", trailer.isFullyRaised());
+        assertTrue("model.Trailer isn't fully raised when supposed to", trailer.isFullyRaised());
 
     }
 
@@ -301,7 +306,7 @@ public class Test {
         s.addTrailer();
         s.removeTrailer();
 
-        assertFalse("Trailer is succesfully removed from Scania.", s.getTrailerConnected());    }
+        assertFalse("model.Trailer is succesfully removed from model.Scania.", s.getTrailerConnected());    }
 
     /**
      * Test if the trailer changes correctly when raised is called
